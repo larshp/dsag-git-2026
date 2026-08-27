@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git im ABAP Kontext</title>
+
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- 1 - Title -->
+        <section data-state="title">
+          <h1>Git im ABAP Kontext</h1>
+          <p class="subtitle">Version control for ABAP development</p>
+          <p class="byline">Lars Hvam &middot; DSAG 2026</p>
+          <aside class="notes">TODO: co-speaker names, session number, date/room.</aside>
+        </section>
+
+        <!-- 2 - Who we are -->
+        <section>
+          <h2>Who we are</h2>
+          <div class="cols">
+            <div>
+              <h3>TODO: Name</h3>
+              <p class="role">TODO: role / company</p>
+              <ul>
+                <li>TODO: background in one line</li>
+                <li>TODO: open source / community work</li>
+                <li>TODO: contact, GitHub handle</li>
+              </ul>
+            </div>
+            <div>
+              <h3>TODO: Name</h3>
+              <p class="role">TODO: role / company</p>
+              <ul>
+                <li>TODO: background in one line</li>
+                <li>TODO: open source / community work</li>
+                <li>TODO: contact, GitHub handle</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">Keep this short — 60 seconds total, then move on.</aside>
+        </section>
+
+        <!-- 3 - Agenda -->
+        <section>
+          <h2>Agenda</h2>
+          <ol>
+            <li>Why version control at all?</li>
+            <li>Git in 5 minutes</li>
+            <li>Git vs. the transport system</li>
+            <li>abapGit</li>
+            <li>Demo</li>
+            <li>What Git unlocks: reviews, CI, linting</li>
+            <li>Workflows that work in practice</li>
+            <li>Pitfalls &amp; limitations</li>
+            <li>Where to start</li>
+          </ol>
+        </section>
+
+        <!-- 4 - Why version control -->
+        <section>
+          <section>
+            <h2>Why version control?</h2>
+            <ul>
+              <li>TODO: who changed this, when, and why?</li>
+              <li>TODO: parallel work on the same objects</li>
+              <li>TODO: reviewing a change before it ships</li>
+              <li>TODO: reproducible history, not just the current state</li>
+            </ul>
+          </section>
+          <section>
+            <h3>What we have today in ABAP</h3>
+            <ul>
+              <li>TODO: version history per object</li>
+              <li>TODO: transport requests as the unit of change</li>
+              <li>TODO: what that gives us — and what it does not</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- 5 - Git in 5 minutes -->
+        <section>
+          <section>
+            <h2>Git in 5 minutes</h2>
+            <p class="lead">Four concepts, nothing more for now.</p>
+          </section>
+          <section>
+            <h3>Repository &amp; commit</h3>
+            <ul>
+              <li>TODO: a repository is files + full history</li>
+              <li>TODO: a commit is a snapshot with author, message, parent</li>
+            </ul>
+            <pre><code data-trim data-noescape class="bash">
+git clone https://github.com/&lt;org&gt;/&lt;repo&gt;.git
+git add .
+git commit -m "FIX: handle empty selection"
+            </code></pre>
+          </section>
+          <section>
+            <h3>Branch &amp; merge</h3>
+            <ul>
+              <li>TODO: a branch is a moving pointer, not a copy</li>
+              <li>TODO: merging brings two lines of work back together</li>
+              <li>TODO: conflicts are normal and local</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Remote &amp; pull request</h3>
+            <ul>
+              <li>TODO: local clone vs. server (GitHub / GitLab / Azure DevOps)</li>
+              <li>TODO: pull request = proposed change + discussion + checks</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- 6 - Git vs transports -->
+        <section>
+          <h2>Git vs. the transport system</h2>
+          <table class="compare">
+            <thead>
+              <tr><th></th><th>CTS / transports</th><th>Git</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Unit of change</td><td>TODO</td><td>TODO</td></tr>
+              <tr><td>History</td><td>TODO</td><td>TODO</td></tr>
+              <tr><td>Branching</td><td>TODO</td><td>TODO</td></tr>
+              <tr><td>Review</td><td>TODO</td><td>TODO</td></tr>
+              <tr><td>Deployment</td><td>TODO</td><td>TODO</td></tr>
+            </tbody>
+          </table>
+          <p class="note">They are not mutually exclusive — TODO: make the point that Git complements CTS.</p>
+        </section>
+
+        <!-- 7 - abapGit -->
+        <section>
+          <section>
+            <h2>abapGit</h2>
+            <ul>
+              <li>TODO: Git client written in ABAP, runs inside the system</li>
+              <li>TODO: serializes ABAP objects to files, and back</li>
+              <li>TODO: online repos (pull/push) and offline repos (zip)</li>
+              <li>TODO: open source, community maintained</li>
+            </ul>
+          </section>
+          <section>
+            <h3>How objects become files</h3>
+            <pre><code data-trim data-noescape class="text">
+src/
+  zcl_example.clas.abap
+  zcl_example.clas.xml
+  zcl_example.clas.testclasses.abap
+  ztable.tabl.xml
+.abapgit.xml
+            </code></pre>
+            <p class="note">TODO: explain the .abap / .xml split in one sentence.</p>
+          </section>
+          <section>
+            <h3>Installation &amp; prerequisites</h3>
+            <ul>
+              <li>TODO: standalone report, one file</li>
+              <li>TODO: SSL / certificates</li>
+              <li>TODO: developer authorizations, package setup</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- 8 - Demo -->
+        <section data-state="demo">
+          <h2>Demo</h2>
+          <ol>
+            <li>TODO: clone a repo into a package</li>
+            <li>TODO: change an object, see the diff</li>
+            <li>TODO: stage, commit, push</li>
+            <li>TODO: open a pull request, show the checks running</li>
+            <li>TODO: pull the change into a second system</li>
+          </ol>
+          <aside class="notes">Fallback: screenshots in `assets/demo/` if the system is unreachable.</aside>
+        </section>
+
+        <!-- 9 - What Git unlocks -->
+        <section>
+          <section>
+            <h2>What Git unlocks</h2>
+            <ul>
+              <li>Code review before merge</li>
+              <li>Static analysis on every change</li>
+              <li>Automated tests in CI</li>
+              <li>Contributions from outside the SAP system</li>
+            </ul>
+          </section>
+          <section>
+            <h3>abaplint</h3>
+            <ul>
+              <li>TODO: linting ABAP outside the system</li>
+              <li>TODO: rules, config, baseline for existing code</li>
+              <li>TODO: CI integration, PR annotations</li>
+            </ul>
+            <pre><code data-trim data-noescape class="json">
+{
+  "global": { "files": "/src/**/*.*" },
+  "syntax": { "version": "v755" },
+  "rules": { "check_syntax": true }
+}
+            </code></pre>
+          </section>
+          <section>
+            <h3>CI pipeline</h3>
+            <pre><code data-trim data-noescape class="yaml">
+name: CI
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx abaplint
+            </code></pre>
+            <p class="note">TODO: mention unit tests / open-abap if it fits the time budget.</p>
+          </section>
+        </section>
+
+        <!-- 10 - Workflows -->
+        <section>
+          <section>
+            <h2>Workflows that work</h2>
+            <p class="lead">TODO: pick two or three, not all of them.</p>
+          </section>
+          <section>
+            <h3>Open source / add-on delivery</h3>
+            <ul>
+              <li>TODO: repo is the source of truth, systems pull</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Custom code alongside transports</h3>
+            <ul>
+              <li>TODO: Git for history and review, CTS for deployment</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Branch per developer / per feature</h3>
+            <ul>
+              <li>TODO: one system per branch? one package per branch?</li>
+              <li>TODO: where this gets hard in ABAP</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- 11 - Pitfalls -->
+        <section>
+          <h2>Pitfalls &amp; limitations</h2>
+          <ul>
+            <li>TODO: no cross-object atomicity like a transport</li>
+            <li>TODO: DDIC changes, conversions, table content</li>
+            <li>TODO: object types not supported / partially supported</li>
+            <li>TODO: two developers, one include, one system</li>
+            <li>TODO: governance, audit, licensing questions</li>
+          </ul>
+        </section>
+
+        <!-- 12 - gCTS -->
+        <section>
+          <h2>And gCTS?</h2>
+          <ul>
+            <li>TODO: what it is, one sentence</li>
+            <li>TODO: how it differs from abapGit</li>
+            <li>TODO: when you would pick which</li>
+          </ul>
+        </section>
+
+        <!-- 13 - Where to start -->
+        <section>
+          <h2>Where to start</h2>
+          <ol>
+            <li>TODO: install abapGit in a sandbox system</li>
+            <li>TODO: put one small package under version control</li>
+            <li>TODO: add abaplint with a baseline</li>
+            <li>TODO: agree on a branching &amp; review convention</li>
+            <li>TODO: then talk about production</li>
+          </ol>
+        </section>
+
+        <!-- 14 - Q&A / links -->
+        <section data-state="closing">
+          <h2>Questions</h2>
+          <ul class="links">
+            <li>abapGit &mdash; <a href="https://abapgit.org">abapgit.org</a></li>
+            <li>abaplint &mdash; <a href="https://abaplint.app">abaplint.app</a></li>
+            <li>These slides &mdash; TODO: repo URL</li>
+            <li>Contact &mdash; TODO</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        transition: "fade",
+        plugins: [RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+/* Deck styling on top of reveal.js' white theme. */
+
+:root {
+  --accent: #0a6ed1;
+  --ink: #1d2d3e;
+  --muted: #5b6b7b;
+  --rule: #d7dee5;
+}
+
+.reveal {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.reveal h1 { font-size: 2.4em; }
+.reveal h2 { font-size: 1.6em; margin-bottom: 0.8em; }
+.reveal h3 { font-size: 1.1em; color: var(--accent); }
+
+.reveal a { color: var(--accent); }
+
+/* Left-align body content; centred bullet lists are hard to read. */
+.reveal .slides section { text-align: left; }
+.reveal .slides section[data-state="title"],
+.reveal .slides section[data-state="closing"] { text-align: center; }
+
+.reveal ul,
+.reveal ol { display: block; margin-left: 1.2em; }
+
+.reveal li { margin-bottom: 0.35em; }
+
+.reveal .subtitle {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.reveal .byline {
+  font-size: 0.65em;
+  color: var(--muted);
+  margin-top: 2em;
+}
+
+.reveal .role {
+  font-size: 0.7em;
+  color: var(--muted);
+  margin: 0 0 0.6em;
+}
+
+.reveal .lead {
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+.reveal .note {
+  font-size: 0.6em;
+  color: var(--muted);
+  border-left: 3px solid var(--rule);
+  padding-left: 0.8em;
+  margin-top: 1.2em;
+}
+
+/* Two-column layout, used on "Who we are". */
+.reveal .cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  align-items: start;
+}
+
+.reveal .cols ul { font-size: 0.75em; margin-left: 1em; }
+
+/* Comparison table. */
+.reveal table.compare {
+  width: 100%;
+  font-size: 0.6em;
+  border-collapse: collapse;
+}
+
+.reveal table.compare th,
+.reveal table.compare td {
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5em 0.6em;
+  text-align: left;
+}
+
+.reveal table.compare thead th {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.reveal table.compare tbody td:first-child {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.reveal pre {
+  box-shadow: none;
+  border: 1px solid var(--rule);
+  width: 100%;
+  font-size: 0.5em;
+}
+
+.reveal pre code { padding: 0.9em 1.1em; max-height: none; }
+
+.reveal ul.links { list-style: none; margin-left: 0; font-size: 0.8em; }
