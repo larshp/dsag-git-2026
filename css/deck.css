@@ -78,11 +78,6 @@ body.deck-page {
   pointer-events: auto;
 }
 
-/* Speaker notes are for the notes window only. */
-.deck-slide .notes {
-  display: none;
-}
-
 /* Step-by-step reveals: keep the space, hide the ink. */
 .fragment {
   opacity: 0;
@@ -185,7 +180,8 @@ body.deck-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(3px);
   font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
   color: #1d2d3e;
 }

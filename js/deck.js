@@ -7,8 +7,7 @@
   plain content.
 
   Handles: fit-to-viewport scaling, keyboard and touch navigation, #/h/v
-  routing, overview, blanking, fullscreen, the speaker-notes window and the
-  ?print-pdf layout.
+  routing, overview, blanking, fullscreen and the ?print-pdf layout.
 */
 (function () {
   "use strict";
@@ -16,7 +15,7 @@
   var W = 1280; // design size — keep in sync with --slide-w / --slide-h
   var H = 720;
   var GAP = 70; // gap between slides in overview, in design pixels
-  var OVERVIEW_ZOOM = 0.24; // overview scale, relative to the fit scale
+  var OVERVIEW_ZOOM = 0.18; // overview scale, relative to the fit scale
   var STAGE_MARGIN = 0.94; // breathing room around the stage
   var MAX_SCALE = 2;
 
@@ -86,7 +85,6 @@
       ["&darr; &nbsp; &uarr;", "within a vertical stack"],
       ["home &nbsp; end", "first / last slide"],
       ["o &nbsp; esc", "overview"],
-      ["s", "speaker notes"],
       ["b &nbsp; .", "blank the screen"],
       ["f", "fullscreen"],
       ["?", "this help"],
@@ -148,7 +146,6 @@
     });
     if (!pending.length) return false;
     pending[0].classList.add("is-visible");
-    postNotes();
     return true;
   }
 
@@ -158,7 +155,6 @@
     });
     if (!shown.length) return false;
     shown[shown.length - 1].classList.remove("is-visible");
-    postNotes();
     return true;
   }
 
@@ -180,7 +176,6 @@
       (flat.length > 1 ? (index / (flat.length - 1)) * 100 : 100) + "%";
 
     writeHash();
-    postNotes();
   }
 
   function go(nextH, nextV, backwards) {
@@ -263,73 +258,6 @@
     if (target) go(target.h, target.v, false);
   });
 
-  /* ---------- speaker notes window -------------------------------------- */
-
-  var notesWindow = null;
-  var notesReady = false;
-
-  function notesOf(el) {
-    var aside = el.querySelector(".notes");
-    return aside ? aside.innerHTML : "";
-  }
-
-  function previewOf(el) {
-    if (!el) return "";
-    var clone = el.cloneNode(true);
-    clone.classList.add("is-present");
-    Array.prototype.forEach.call(clone.querySelectorAll(".notes"), function (aside) {
-      aside.remove();
-    });
-    return clone.outerHTML;
-  }
-
-  function upcoming() {
-    var index = currentIndex();
-    return index + 1 < flat.length ? flat[index + 1].el : null;
-  }
-
-  function openNotes() {
-    if (notesWindow && !notesWindow.closed) {
-      notesWindow.focus();
-      return;
-    }
-    notesReady = false;
-    notesWindow = window.open(
-      "notes.html",
-      "deck-notes",
-      "width=1180,height=760"
-    );
-  }
-
-  function postNotes() {
-    if (!notesWindow || notesWindow.closed || !notesReady) return;
-    var index = currentIndex();
-    notesWindow.postMessage(
-      {
-        type: "deck-state",
-        index: index + 1,
-        total: flat.length,
-        stack: grid[h].length > 1 ? v + 1 + " / " + grid[h].length : "",
-        notes: notesOf(currentEl()),
-        current: previewOf(currentEl()),
-        next: previewOf(upcoming()),
-      },
-      "*"
-    );
-  }
-
-  window.addEventListener("message", function (event) {
-    if (!notesWindow || event.source !== notesWindow) return;
-    var data = event.data;
-    if (!data || typeof data !== "object") return;
-    if (data.type === "deck-notes-ready") {
-      notesReady = true;
-      postNotes();
-    } else if (data.type === "deck-notes-key") {
-      handleKey(data.key, !!data.shiftKey);
-    }
-  });
-
   /* ---------- input ----------------------------------------------------- */
 
   function handleKey(key, shift) {
@@ -379,10 +307,6 @@
       case "f":
       case "F":
         toggleFullscreen();
-        return true;
-      case "s":
-      case "S":
-        openNotes();
         return true;
       case "?":
         help.hidden = !help.hidden;
