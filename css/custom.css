@@ -348,6 +348,359 @@
 }
 .terminal-status .prompt,
 .terminal-status strong { color: var(--git-light); font-weight: 700; }
+
+/* Sponsors */
+
+.deck-slide.slide-sponsors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 92px 116px;
+}
+
+.sponsor-heading .eyebrow { margin-bottom: 18px; }
+.sponsor-heading h2 { font-size: 1.3em; }
+
+.coffee-callout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  margin: 26px auto 0;
+  padding: 10px 24px 10px 10px;
+  border: 1px solid rgba(240,60,46,.16);
+  border-radius: 999px;
+  color: var(--ink);
+  background: linear-gradient(105deg, rgba(240,60,46,.11), rgba(240,60,46,.035) 58%, rgba(23,63,87,.06));
+  box-shadow: 0 10px 26px rgba(23,63,87,.08);
+  font: 560 .36em/1.2 var(--mono);
+}
+
+.coffee-icons {
+  display: flex;
+  gap: 5px;
+  font: 400 1.35em/1 "Segoe UI Emoji", sans-serif;
+}
+
+.coffee-icons span {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 4px 12px rgba(23,63,87,.1);
+}
+
+.coffee-icons span:last-child { transform: translateY(-2px) rotate(5deg); }
+
+.coffee-callout strong {
+  color: var(--git);
+  font-size: 1.18em;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.sponsor-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  margin-top: 34px;
+}
+
+.sponsor-group + .sponsor-group {
+  padding-left: 72px;
+  border-left: 1px solid var(--rule);
+}
+
+.sponsor-group h3 {
+  margin: 0 0 26px;
+  color: var(--muted);
+  font: 650 .34em/1.2 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sponsor-group h3 a {
+  color: var(--git);
+  text-decoration: none;
+}
+
+.sponsor-group + .sponsor-group h3 a { color: var(--dsag); }
+
+.sponsor-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.sponsor {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+}
+
+.sponsor img {
+  display: block;
+  width: 142px;
+  height: 142px;
+  border: 5px solid var(--white);
+  border-radius: 30px;
+  object-fit: cover;
+  box-shadow: 0 16px 36px rgba(23,63,87,.16), 0 0 0 1px rgba(23,63,87,.12);
+}
+
+.sponsor-logo img {
+  box-sizing: border-box;
+  padding: 18px;
+  object-fit: contain;
+}
+
+.sponsor strong {
+  max-width: 210px;
+  margin-top: 17px;
+  font-size: .45em;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+}
+
+.sponsor span {
+  margin-top: 7px;
+  color: var(--muted);
+  font: 540 .3em/1.2 var(--mono);
+}
+
+.sponsor-source {
+  position: absolute;
+  right: 92px;
+  bottom: 100px;
+  margin: 0;
+  color: rgba(23,63,87,.52);
+  font: 520 .27em/1.2 var(--mono);
+}
+
+/* What is abapGit? */
+
+.deck-slide.slide-about-abapgit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 66px 92px 102px;
+}
+
+.about-heading {
+  display: grid;
+  grid-template-columns: .72fr 1.28fr;
+  column-gap: 68px;
+  align-items: end;
+}
+
+.about-heading .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 17px;
+}
+
+.about-heading h2 { font-size: 1.46em; }
+
+.about-definition {
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: .42em;
+  line-height: 1.45;
+}
+
+.about-definition strong {
+  color: var(--ink);
+  font-weight: 720;
+}
+
+.about-update {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  color: var(--dsag);
+  font: 680 .76em/1.2 var(--mono);
+}
+
+.about-update > span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--git), var(--blend));
+  font: 700 18px/1 var(--sans);
+}
+
+.about-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 42px;
+}
+
+.about-metric {
+  position: relative;
+  min-height: 142px;
+  padding: 26px 28px 24px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 22px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 14px 32px rgba(23,63,87,.08);
+}
+
+.about-metric::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  bottom: -56px;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .08;
+}
+
+.about-metric strong,
+.about-metric span { display: block; }
+
+.about-metric strong {
+  color: currentColor;
+  font-size: 1.16em;
+  line-height: .95;
+  letter-spacing: -.055em;
+}
+
+.about-metric span {
+  margin-top: 14px;
+  color: var(--ink);
+  font: 640 .33em/1.2 var(--mono);
+}
+
+.metric-orange { color: var(--git); }
+.metric-blend { color: var(--blend); }
+.metric-blue { color: var(--dsag); }
+
+.about-lower {
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.about-capabilities,
+.about-contribute {
+  min-height: 88px;
+  border-radius: 18px;
+}
+
+.about-capabilities {
+  padding: 18px 24px;
+  border: 1px solid rgba(240,60,46,.15);
+  background: linear-gradient(105deg, rgba(240,60,46,.095), rgba(240,60,46,.025));
+}
+
+.about-capabilities > p {
+  margin: 0 0 12px;
+  color: var(--git);
+  font: 720 .28em/1 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.capability-tags {
+  display: flex;
+  gap: 12px;
+}
+
+.capability-tags span {
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--white);
+  box-shadow: 0 3px 10px rgba(23,63,87,.07);
+  font: 650 .3em/1 var(--mono);
+}
+
+.about-contribute {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 17px 25px;
+  color: var(--white);
+  background: linear-gradient(112deg, var(--dsag), #254f66 58%, #51364a);
+  box-shadow: 0 14px 30px rgba(23,63,87,.15);
+}
+
+.about-contribute p {
+  margin: 0;
+  font-size: .34em;
+  line-height: 1.35;
+}
+
+.about-contribute strong { color: var(--git-light); }
+
+.branch-mark {
+  position: relative;
+  flex: 0 0 64px;
+  height: 42px;
+}
+
+.branch-mark::before,
+.branch-mark::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  width: 43px;
+  border: 2px solid rgba(255,255,255,.62);
+  border-left: 0;
+}
+
+.branch-mark::before {
+  top: 9px;
+  height: 23px;
+  border-bottom: 0;
+  border-radius: 0 18px 0 0;
+}
+
+.branch-mark::after {
+  top: 21px;
+  height: 12px;
+  border-top: 0;
+  border-radius: 0 0 18px 0;
+}
+
+.branch-mark i {
+  position: absolute;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border: 3px solid var(--dsag);
+  border-radius: 50%;
+  background: var(--git-light);
+}
+
+.branch-mark i:nth-child(1) { left: 1px; top: 16px; }
+.branch-mark i:nth-child(2) { right: 1px; top: 3px; }
+.branch-mark i:nth-child(3) { right: 1px; bottom: 3px; }
+
+.about-source {
+  position: absolute;
+  right: 92px;
+  bottom: 76px;
+  margin: 0;
+  color: rgba(23,63,87,.5);
+  font: 520 .25em/1.2 var(--mono);
+}
+
+.about-source a { text-decoration: none; }
+
 /* Closing */
 
 .deck-slide.slide-closing {
