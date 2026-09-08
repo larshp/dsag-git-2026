@@ -45,7 +45,10 @@ slide can be linked to or reloaded without losing your place.
 - `assets/` — images and demo fallback screenshots, plus the two title-slide
   logos: `abapgit-logo.svg` (from the abapGit repo, MIT) and `dsag-logo.svg`
   (DSAG trademark, from Wikimedia). They are vendored rather than hot-linked so
-  the deck also works offline.
+  the deck also works offline. Both are recoloured for the dark title slide —
+  the abapGit wordmark is white instead of `#362701`, and the DSAG disc gains a
+  `--dsag-light` ring — so they only read on a dark background. Re-download the
+  originals before reusing them on a light slide.
 - `assets/icons/` — [Bootstrap Icons](https://icons.getbootstrap.com) (MIT),
   the source files behind the `.icon-*` rules in `css/custom.css`.
 - `assets/slides-qr.svg` — QR code on the closing slide. If the published URL

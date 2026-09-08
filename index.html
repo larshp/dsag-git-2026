@@ -23,6 +23,11 @@
               <p class="byline">Marc Bernard <i></i> Lars Hvam</p>
             </div>
           </div>
+          <div class="title-logos">
+            <img class="logo-abapgit" src="assets/abapgit-logo.svg" alt="abapGit" />
+            <span class="logo-divider" aria-hidden="true"></span>
+            <img class="logo-dsag" src="assets/dsag-logo.svg" alt="DSAG" />
+          </div>
           <!-- TODO: session number, date/room. -->
         </section>
 
@@ -155,7 +160,50 @@
           <p class="about-source"><a href="https://docs.abapgit.org/user-guide/reference/supported.html">abapGit supported object types</a> &middot; September 2026</p>
         </section>
 
-        <!-- 5 - Why? Oh why? section -->
+        <!-- 5 - Who uses abapGit? -->
+        <section class="slide-adoption">
+          <div class="adoption-heading">
+            <p class="eyebrow">Adoption</p>
+            <h2>Who uses abapGit?</h2>
+            <p class="adoption-lead"><strong>49 organisations have put their name on the record</strong> &mdash; customers, SAP itself, and consulting partners, each added to the abapGit docs by pull request. <a href="https://dotabap.org">dotabap.org</a> counts the ABAP they publish openly.</p>
+          </div>
+
+          <div class="about-metrics" aria-label="abapGit adoption at a glance">
+            <article class="about-metric metric-orange">
+              <strong>2.4m</strong>
+              <span>lines of open-source ABAP</span>
+            </article>
+            <article class="about-metric metric-blend">
+              <strong>341</strong>
+              <span>projects indexed</span>
+            </article>
+            <article class="about-metric metric-blue">
+              <strong>49</strong>
+              <span>organisations named</span>
+            </article>
+          </div>
+
+          <div class="adoption-users">
+            <div class="adoption-group">
+              <p class="adoption-label">Customers &middot; 16</p>
+              <p class="adoption-names">Schwarz Group &middot; Hansgrohe &middot; Linde Engineering &middot; Endress+Hauser &middot; RheinEnergie &middot; bonprix &middot; Haufe Group &middot; GEZE &middot; City of Zurich</p>
+            </div>
+            <div class="adoption-group">
+              <p class="adoption-label">SAP &middot; 2</p>
+              <p class="adoption-names">SAP IBSO &middot; SAP Labs Czech Republic</p>
+            </div>
+            <div class="adoption-group">
+              <p class="adoption-label">Consulting &amp; partners &middot; 31</p>
+              <p class="adoption-names">abat &middot; adesso &middot; CQSE &middot; Hochfrequenz &middot; rku.it &middot; objective partner &middot; Microsoft Azure</p>
+            </div>
+          </div>
+
+          <p class="adoption-invisible"><strong>And the part nobody can count.</strong> The list is self-reported and internal repositories never appear anywhere &mdash; every number here is a floor.</p>
+
+          <p class="about-source"><a href="https://docs.abapgit.org/user-guide/other/where-used.html">Who Uses abapGit?</a> &middot; <a href="https://dotabap.org">dotabap.org</a> &middot; checked September 2026</p>
+        </section>
+
+        <!-- 6 - Why? Oh why? section -->
         <section data-state="why" class="slide-why-section">
           <div class="why-section-copy">
             <p class="eyebrow">Why Git in ABAP?</p>
@@ -172,7 +220,7 @@
           <p class="why-section-source">Inspired by <a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Heliconia Labs Flow One-Pagers</a></p>
         </section>
 
-        <!-- 6 - Quality built in -->
+        <!-- 7 - Quality built in -->
         <section class="slide-why-content slide-quality">
           <header class="why-heading">
             <p class="eyebrow">Reason 01</p>
@@ -208,7 +256,7 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
         </section>
 
-        <!-- 7 - Shared engineering memory -->
+        <!-- 8 - Shared engineering memory -->
         <section class="slide-why-content slide-memory">
           <header class="why-heading">
             <p class="eyebrow">Reason 02</p>
@@ -243,7 +291,7 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
         </section>
 
-        <!-- 8 - Security -->
+        <!-- 9 - Security -->
         <section class="slide-why-content slide-security">
           <header class="why-heading">
             <p class="eyebrow">Reason 03</p>
@@ -263,7 +311,7 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Security</p>
         </section>
 
-        <!-- 9 - Clean core -->
+        <!-- 10 - Clean core -->
         <section class="slide-why-content slide-clean-core">
           <header class="why-heading">
             <p class="eyebrow">Reason 04</p>
@@ -287,7 +335,7 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Clean Core and Extension Governance</p>
         </section>
 
-        <!-- 10 - Release visibility -->
+        <!-- 11 - Release visibility -->
         <section class="slide-why-content slide-release">
           <header class="why-heading">
             <p class="eyebrow">Reason 05</p>
@@ -307,7 +355,7 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
         </section>
 
-        <!-- 11 - Q&A / links -->
+        <!-- 12 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>
@@ -316,6 +364,7 @@
               <li><a href="https://abapgit.org">abapgit.org</a></li>
               <li><a href="https://abaplint.app">abaplint.app</a></li>
             </ul>
+            <p class="closing-note">abapGit at DSAG 2018: <a href="https://larshp.github.io/Presentations/dsag2018/">larshp.github.io/Presentations/dsag2018</a></p>
           </div>
           <div class="qr">
             <div class="qr-frame">

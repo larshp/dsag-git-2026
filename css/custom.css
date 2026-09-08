@@ -187,7 +187,8 @@
 /* Title */
 
 .deck-slide.slide-title {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 50px 68px 54px;
   color: var(--white);
   background: transparent;
@@ -212,6 +213,7 @@
 }
 
 .title-topline {
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -223,9 +225,9 @@
 .edition { color: rgba(255,255,255,.64); }
 
 .title-layout {
+  flex: 1;
   display: flex;
   align-items: center;
-  height: 556px;
 }
 
 .title-copy h1 {
@@ -254,6 +256,28 @@
   height: 5px;
   border-radius: 50%;
   background: var(--git);
+}
+
+/*
+  Both logo assets are reversed for the dark title slide: the abapGit wordmark
+  is white (its mark keeps the git red), and the DSAG disc carries a
+  --dsag-light ring so it separates from a background of the same navy.
+*/
+.title-logos {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.logo-abapgit { height: 34px; }
+
+.logo-dsag { height: 54px; }
+
+.logo-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255,255,255,.2);
 }
 
 /* Speakers */
@@ -683,6 +707,78 @@
 }
 
 .about-source a { text-decoration: none; }
+
+/* Who uses abapGit - reuses the .about-metrics tiles */
+
+.deck-slide.slide-adoption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 62px 92px 92px;
+}
+
+.adoption-heading { max-width: 1000px; }
+.adoption-heading .eyebrow { margin-bottom: 17px; }
+.adoption-heading h2 { font-size: 1.46em; }
+
+/* .deck-slide p zeroes margin-top, so these need the slide class to win. */
+.slide-adoption .adoption-lead {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: .42em;
+  line-height: 1.45;
+}
+
+.adoption-lead strong {
+  color: var(--ink);
+  font-weight: 720;
+}
+
+/* Shorter than on slide 4 - this slide carries three name columns as well. */
+.slide-adoption .about-metrics { margin-top: 30px; }
+.slide-adoption .about-metric { min-height: 118px; }
+
+/* Columns are sized to the name lists: SAP has two entries, the others many. */
+.adoption-users {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr 1fr;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.adoption-group {
+  padding: 16px 22px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  background: rgba(255,255,255,.6);
+}
+
+.slide-adoption .adoption-label {
+  margin: 0 0 10px;
+  color: var(--dsag);
+  font: 720 .26em/1 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.slide-adoption .adoption-names {
+  margin: 0;
+  color: var(--ink);
+  font-size: .3em;
+  line-height: 1.55;
+}
+
+.slide-adoption .adoption-invisible {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: .34em;
+  line-height: 1.5;
+}
+
+.adoption-invisible strong {
+  color: var(--ink);
+  font-weight: 720;
+}
 
 /* Why? Oh why? */
 
@@ -1302,6 +1398,12 @@
   font: 520 .45em/1.2 var(--mono);
 }
 .links a { text-decoration: none; }
+/* .deck-slide p zeroes margin-top, so this needs the slide class to win. */
+.slide-closing .closing-note {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font: 520 .3em/1.4 var(--mono);
+}
 .links a::before {
   content: "";
   display: inline-block;
