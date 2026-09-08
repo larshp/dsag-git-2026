@@ -7,7 +7,7 @@
   plain content.
 
   Handles: fit-to-viewport scaling, keyboard and touch navigation, #/h/v
-  routing, overview, blanking, fullscreen and the ?print-pdf layout.
+  routing, overview, blanking and fullscreen.
 */
 (function () {
   "use strict";
@@ -16,8 +16,6 @@
   var H = 720;
   var GAP = 70; // gap between slides in overview, in design pixels
   var OVERVIEW_ZOOM = 0.18; // overview scale, relative to the fit scale
-  var STAGE_MARGIN = 0.94; // breathing room around the stage
-  var MAX_SCALE = 2;
 
   var deck = document.querySelector(".deck");
   var stage = deck && deck.querySelector(".deck-slides");
@@ -59,8 +57,6 @@
   var blanked = false;
   var ignoreHashChange = false;
   var animationTimer = null;
-
-  var printMode = new URLSearchParams(location.search).has("print-pdf");
 
   /* ---------- chrome ---------------------------------------------------- */
 
@@ -171,6 +167,10 @@
     stage.style.setProperty("--pan-y", -(v * (H + GAP)) + "px");
 
     var index = currentIndex();
+    deck.setAttribute(
+      "data-slide-state",
+      currentEl().getAttribute("data-state") || "content"
+    );
     counterEl.textContent = index + 1 + " / " + flat.length;
     progressEl.style.width =
       (flat.length > 1 ? (index / (flat.length - 1)) * 100 : 100) + "%";
@@ -202,11 +202,7 @@
   /* ---------- scaling --------------------------------------------------- */
 
   function layout() {
-    if (printMode) return;
-    var scale = Math.min(
-      Math.min(window.innerWidth / W, window.innerHeight / H) * STAGE_MARGIN,
-      MAX_SCALE
-    );
+    var scale = Math.min(window.innerWidth / W, window.innerHeight / H);
     stage.style.setProperty("--scale", scale);
     stage.style.setProperty("--overview-scale", scale * OVERVIEW_ZOOM);
   }
@@ -317,7 +313,6 @@
   }
 
   document.addEventListener("keydown", function (event) {
-    if (printMode) return;
     if (event.ctrlKey || event.metaKey || event.altKey) return;
     var target = event.target;
     if (
@@ -392,15 +387,6 @@
     slide.el.style.setProperty("--ox", slide.h * (W + GAP) + "px");
     slide.el.style.setProperty("--oy", slide.v * (H + GAP) + "px");
   });
-
-  if (printMode) {
-    deck.classList.add("is-print", "is-ready");
-    document.body.classList.add("is-print");
-    flat.forEach(function (slide) {
-      setFragments(slide.el, true);
-    });
-    return;
-  }
 
   var start = readHash();
   if (start) {

@@ -1,5 +1,5 @@
 /*
-  Deck engine — layout, scaling, navigation chrome, overview, print.
+  Deck engine — layout, scaling, navigation chrome and overview.
   Content styling (typography, colours, code theme) lives in custom.css.
 
   The stage is a fixed 1280x720 box that is scaled to fit the viewport, so a
@@ -10,10 +10,10 @@
 :root {
   --slide-w: 1280px;
   --slide-h: 720px;
-  --stage-bg: #fff;
-  --chrome-ink: #93a1af;
-  --chrome-rule: #e4e9ee;
-  --chrome-accent: #0a6ed1;
+  --stage-bg: #091a25;
+  --chrome-ink: rgba(255, 255, 255, 0.5);
+  --chrome-rule: rgba(255, 255, 255, 0.1);
+  --chrome-accent: #f03c2e;
 }
 
 body.deck-page {
@@ -27,6 +27,10 @@ body.deck-page {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(240, 60, 46, 0.12), transparent 32%),
+    radial-gradient(circle at 80% 84%, rgba(23, 63, 87, 0.5), transparent 38%),
+    var(--stage-bg);
 }
 
 /* Hide the slides until deck.js has classified and positioned them. */
@@ -69,7 +73,7 @@ body.deck-page {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 240ms ease;
+  transition: opacity 280ms ease, filter 280ms ease;
 }
 
 .deck-slide.is-present {
@@ -100,7 +104,7 @@ body.deck-page {
   visibility: visible;
   pointer-events: auto;
   cursor: pointer;
-  background: var(--stage-bg);
+  background: #f6f7f8;
   outline: 3px solid var(--chrome-rule);
   transform: translate(var(--ox, 0px), var(--oy, 0px));
 }
@@ -180,10 +184,10 @@ body.deck-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(9, 26, 37, 0.97);
   backdrop-filter: blur(3px);
   font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
-  color: #1d2d3e;
+  color: #f7f8f9;
 }
 
 .deck-help table {
@@ -207,7 +211,7 @@ body.deck-page {
   border: 1px solid var(--chrome-rule);
   border-bottom-width: 2px;
   border-radius: 4px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.08);
   font: 500 12px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace;
 }
 
@@ -221,80 +225,6 @@ body.deck-page {
 .deck.is-blank .deck-chrome,
 .deck.is-blank .deck-progress {
   opacity: 0;
-}
-
-/* ---------- print / PDF export ------------------------------------------ */
-
-@page {
-  size: 1280px 720px;
-  margin: 0;
-}
-
-body.deck-page.is-print {
-  overflow: visible;
-  background: #767c82;
-}
-
-.deck.is-print {
-  position: static;
-  overflow: visible;
-}
-
-.deck.is-print .deck-chrome,
-.deck.is-print .deck-progress,
-.deck.is-print .deck-help {
-  display: none;
-}
-
-.deck.is-print .deck-slides {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  transform: none;
-  visibility: visible;
-}
-
-.deck.is-print .deck-stack {
-  position: static;
-  pointer-events: auto;
-}
-
-.deck.is-print .deck-slide {
-  position: relative;
-  inset: auto;
-  width: var(--slide-w);
-  height: var(--slide-h);
-  margin: 0 auto;
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
-  background: var(--stage-bg);
-  break-after: page;
-  page-break-after: always;
-}
-
-.deck.is-print .fragment {
-  opacity: 1;
-}
-
-@media screen {
-  /* Preview of the print layout: show the page edges. */
-  .deck.is-print .deck-slide {
-    margin: 24px auto;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-  }
-}
-
-@media print {
-  body.deck-page.is-print {
-    background: #fff;
-  }
-
-  .deck.is-print .deck-slide {
-    margin: 0;
-    box-shadow: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

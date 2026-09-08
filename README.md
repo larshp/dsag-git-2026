@@ -32,19 +32,14 @@ swiping works on touch screens.
 The current position is in the URL (`#/4/1` = fifth stack, second slide), so a
 slide can be linked to or reloaded without losing your place.
 
-## Export to PDF
-
-Open <http://localhost:8000/?print-pdf> and print to PDF from the browser
-(Chrome: no margins, background graphics on). Each slide becomes one 16:9 page.
-
 ## Structure
 
 - `index.html` — the slides, one `<section>` each; nested `<section>`s form
   vertical stacks (drill-down details that can be skipped when time is short).
-- `js/deck.js` — the engine: scaling, navigation, overview, print.
+- `js/deck.js` — the engine: scaling, navigation and overview.
 - `js/highlight.js` — syntax highlighting for `bash`, `json`, `yaml`, `diff`,
   `abap` and `text`.
-- `css/deck.css` — engine styling: the 1280×720 stage, chrome, overview, print.
+- `css/deck.css` — engine styling: the 1280×720 stage, chrome and overview.
 - `css/custom.css` — typography, two-column layout, comparison table, code
   theme.
 - `assets/` — images and demo fallback screenshots, plus the two title-slide

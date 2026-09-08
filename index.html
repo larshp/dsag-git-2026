@@ -12,21 +12,27 @@
     <div class="deck">
       <div class="deck-slides">
         <!-- 1 - Title -->
-        <section data-state="title">
-          <div class="logos">
-            <img class="logo-abapgit" src="assets/abapgit-logo.svg" alt="abapGit" />
-            <img class="logo-dsag" src="assets/dsag-logo.svg" alt="DSAG — Deutschsprachige SAP-Anwendergruppe" />
+        <section data-state="title" class="slide-title">
+          <div class="ambient ambient-two" aria-hidden="true"></div>
+          <div class="title-topline">
+            <span class="edition">DSAG 2026</span>
           </div>
-          <p class="subtitle">Git im ABAP Kontext</p>
-          <p class="byline">Marc Bernard &middot; Lars Hvam &middot; DSAG 2026</p>
+          <div class="title-layout">
+            <div class="title-copy">
+              <h1>Git im<br /><span>ABAP Kontext</span></h1>
+              <p class="byline">Marc Bernard <i></i> Lars Hvam</p>
+            </div>
+          </div>
           <!-- TODO: session number, date/room. -->
         </section>
 
         <!-- 2 - Who we are -->
-        <section>
-          <h2>Who we are</h2>
-          <div class="cols">
-            <div>
+        <section class="slide-speakers">
+          <div class="slide-heading">
+            <h2>Who we are</h2>
+          </div>
+          <div class="cols people">
+            <article class="speaker speaker-marc">
               <h3>Marc Bernard</h3>
               <p class="role">apm.to Inc. &middot; Toronto</p>
               <ul>
@@ -39,13 +45,13 @@
                 <a href="https://x.com/marcfbe"><span class="icon icon-x"></span>@marcfbe</a>
                 <a href="https://bsky.app/profile/marcf.be"><span class="icon icon-bluesky"></span>marcf.be</a>
               </p>
-            </div>
-            <div>
+            </article>
+            <article class="speaker speaker-lars">
               <h3>Lars Hvam</h3>
               <p class="role">Heliconia Labs &middot; Copenhagen</p>
               <ul>
                 <li>Created abapGit and abaplint</li>
-                <li>open-abap &mdash; running ABAP outside the system</li>
+                <li>open-abap &middot; running ABAP outside the system</li>
               </ul>
               <p class="contact">
                 <a href="https://github.com/larshp"><span class="icon icon-github"></span>@larshp</a>
@@ -53,30 +59,45 @@
                 <a href="https://x.com/LarsHvam"><span class="icon icon-x"></span>@LarsHvam</a>
                 <a href="https://bsky.app/profile/larshvam.bsky.social"><span class="icon icon-bluesky"></span>larshvam.bsky.social</a>
               </p>
-            </div>
+            </article>
           </div>
-          <!-- Keep this short — 60 seconds total, then move on. -->
+          <!-- Keep this short - 60 seconds total, then move on. -->
         </section>
 
         <!-- 3 - Body of the talk, still to be written -->
-        <section>
-          <h2>TODO</h2>
-          <p class="lead">The body of the talk goes here.</p>
+        <section data-state="draft" class="slide-draft">
+          <div class="draft-copy">
+            <p class="eyebrow">Work in progress</p>
+            <h2>Talk content</h2>
+            <p class="lead">The body of the talk goes here.</p>
+          </div>
+          <div class="terminal-status" aria-label="Draft status">
+            <span class="prompt">$</span><span>git status --short</span>
+            <strong>??</strong><span>content/outline.md</span>
+          </div>
+          <div class="draft-graph" aria-hidden="true">
+            <span></span><i></i><i></i><i></i>
+          </div>
         </section>
 
         <!-- 4 - Q&A / links -->
-        <section data-state="closing">
-          <h2>Questions</h2>
-          <ul class="links">
-            <li><a href="https://abapgit.org">abapgit.org</a></li>
-            <li><a href="https://abaplint.app">abaplint.app</a></li>
-          </ul>
-          <div class="qr">
-            <img src="assets/slides-qr.svg" alt="QR code linking to larshp.github.io/dsag-git-2026" />
-            <p>These slides &mdash;
-              <a href="https://larshp.github.io/dsag-git-2026/">larshp.github.io/dsag-git-2026</a>
-            </p>
+        <section data-state="closing" class="slide-closing">
+          <div class="closing-copy">
+            <p class="eyebrow">Checkout complete</p>
+            <h2>Questions?</h2>
+            <ul class="links">
+              <li><a href="https://abapgit.org">abapgit.org</a></li>
+              <li><a href="https://abaplint.app">abaplint.app</a></li>
+            </ul>
           </div>
+          <div class="qr">
+            <div class="qr-frame">
+              <img src="assets/slides-qr.svg" alt="QR code linking to larshp.github.io/dsag-git-2026" />
+            </div>
+            <p>Slides and links</p>
+            <a href="https://larshp.github.io/dsag-git-2026/">larshp.github.io/dsag-git-2026</a>
+          </div>
+          <div class="commit-finale" aria-hidden="true"><span></span><i></i></div>
         </section>
       </div>
     </div>
