@@ -7,7 +7,6 @@
     "start": "http-server . -p 8000 -o -c-1"
   },
   "devDependencies": {
-    "http-server": "^14.1.1",
-    "reveal.js": "^5.1.0"
+    "http-server": "^14.1.1"
   }
 }

@@ -1,0 +1,311 @@
+/*
+  Deck engine — layout, scaling, navigation chrome, overview, print.
+  Content styling (typography, colours, code theme) lives in custom.css.
+
+  The stage is a fixed 1280x720 box that is scaled to fit the viewport, so a
+  slide looks identical on a laptop and on a projector. --slide-w / --slide-h
+  must stay in sync with the W / H constants in js/deck.js.
+*/
+
+:root {
+  --slide-w: 1280px;
+  --slide-h: 720px;
+  --stage-bg: #fff;
+  --chrome-ink: #93a1af;
+  --chrome-rule: #e4e9ee;
+  --chrome-accent: #0a6ed1;
+}
+
+body.deck-page {
+  margin: 0;
+  overflow: hidden;
+  background: var(--stage-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Hide the slides until deck.js has classified and positioned them. */
+.deck:not(.is-ready) .deck-slides {
+  visibility: hidden;
+}
+
+.deck-slides {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  margin-left: calc(var(--slide-w) / -2);
+  margin-top: calc(var(--slide-h) / -2);
+  transform-origin: 50% 50%;
+  transform: scale(var(--scale, 1));
+}
+
+/* Only on/off for overview, so resizing does not animate. */
+.deck-slides.is-animating {
+  transition: transform 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* A <section> that contains further <section>s: a vertical stack. */
+.deck-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.deck-slide {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 72px 78px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.deck-slide.is-present {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Speaker notes are for the notes window only. */
+.deck-slide .notes {
+  display: none;
+}
+
+/* Step-by-step reveals: keep the space, hide the ink. */
+.fragment {
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.fragment.is-visible {
+  opacity: 1;
+}
+
+/* ---------- overview ---------------------------------------------------- */
+
+.deck.is-overview .deck-slides {
+  transform: scale(var(--overview-scale, 0.3))
+    translate(var(--pan-x, 0px), var(--pan-y, 0px));
+}
+
+.deck.is-overview .deck-slide {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--stage-bg);
+  outline: 3px solid var(--chrome-rule);
+  transform: translate(var(--ox, 0px), var(--oy, 0px));
+}
+
+.deck.is-overview .deck-slide.is-present {
+  outline: 10px solid var(--chrome-accent);
+}
+
+.deck.is-overview .fragment {
+  opacity: 1;
+}
+
+/* ---------- chrome ------------------------------------------------------ */
+
+.deck-chrome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 14px;
+  font: 500 13px/1 "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--chrome-ink);
+  pointer-events: none;
+}
+
+.deck-help-btn {
+  pointer-events: auto;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--chrome-rule);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.deck-help-btn:hover {
+  color: var(--chrome-accent);
+  border-color: var(--chrome-accent);
+}
+
+.deck-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+.deck-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--chrome-rule);
+}
+
+.deck-progress > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--chrome-accent);
+  transition: width 240ms ease;
+}
+
+/* ---------- help overlay ------------------------------------------------ */
+
+.deck-help[hidden] {
+  display: none;
+}
+
+.deck-help {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.94);
+  font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #1d2d3e;
+}
+
+.deck-help table {
+  border-collapse: collapse;
+}
+
+.deck-help caption {
+  padding-bottom: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.deck-help td {
+  padding: 4px 14px 4px 0;
+}
+
+.deck-help kbd {
+  display: inline-block;
+  min-width: 12px;
+  padding: 2px 7px;
+  border: 1px solid var(--chrome-rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: #fff;
+  font: 500 12px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+/* ---------- blanked screen ---------------------------------------------- */
+
+.deck.is-blank {
+  background: #000;
+}
+
+.deck.is-blank .deck-slides,
+.deck.is-blank .deck-chrome,
+.deck.is-blank .deck-progress {
+  opacity: 0;
+}
+
+/* ---------- print / PDF export ------------------------------------------ */
+
+@page {
+  size: 1280px 720px;
+  margin: 0;
+}
+
+body.deck-page.is-print {
+  overflow: visible;
+  background: #767c82;
+}
+
+.deck.is-print {
+  position: static;
+  overflow: visible;
+}
+
+.deck.is-print .deck-chrome,
+.deck.is-print .deck-progress,
+.deck.is-print .deck-help {
+  display: none;
+}
+
+.deck.is-print .deck-slides {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  transform: none;
+  visibility: visible;
+}
+
+.deck.is-print .deck-stack {
+  position: static;
+  pointer-events: auto;
+}
+
+.deck.is-print .deck-slide {
+  position: relative;
+  inset: auto;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  margin: 0 auto;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  background: var(--stage-bg);
+  break-after: page;
+  page-break-after: always;
+}
+
+.deck.is-print .fragment {
+  opacity: 1;
+}
+
+@media screen {
+  /* Preview of the print layout: show the page edges. */
+  .deck.is-print .deck-slide {
+    margin: 24px auto;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media print {
+  body.deck-page.is-print {
+    background: #fff;
+  }
+
+  .deck.is-print .deck-slide {
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-slide,
+  .fragment,
+  .deck-slides,
+  .deck-progress > span {
+    transition: none !important;
+  }
+}

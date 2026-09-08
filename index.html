@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Git im ABAP Kontext</title>
 
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="theme" />
-    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css" />
+    <link rel="stylesheet" href="css/deck.css" />
     <link rel="stylesheet" href="css/custom.css" />
   </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
+  <body class="deck-page">
+    <div class="deck">
+      <div class="deck-slides">
         <!-- 1 - Title -->
         <section data-state="title">
           <h1>Git im ABAP Kontext</h1>
@@ -96,7 +94,7 @@
               <li>TODO: a repository is files + full history</li>
               <li>TODO: a commit is a snapshot with author, message, parent</li>
             </ul>
-            <pre><code data-trim data-noescape class="bash">
+            <pre><code class="language-bash">
 git clone https://github.com/&lt;org&gt;/&lt;repo&gt;.git
 git add .
 git commit -m "FIX: handle empty selection"
@@ -150,7 +148,7 @@ git commit -m "FIX: handle empty selection"
           </section>
           <section>
             <h3>How objects become files</h3>
-            <pre><code data-trim data-noescape class="text">
+            <pre><code class="language-text">
 src/
   zcl_example.clas.abap
   zcl_example.clas.xml
@@ -180,7 +178,7 @@ src/
             <li>TODO: open a pull request, show the checks running</li>
             <li>TODO: pull the change into a second system</li>
           </ol>
-          <aside class="notes">Fallback: screenshots in `assets/demo/` if the system is unreachable.</aside>
+          <aside class="notes">Fallback: screenshots in <code>assets/demo/</code> if the system is unreachable.</aside>
         </section>
 
         <!-- 9 - What Git unlocks -->
@@ -201,7 +199,7 @@ src/
               <li>TODO: rules, config, baseline for existing code</li>
               <li>TODO: CI integration, PR annotations</li>
             </ul>
-            <pre><code data-trim data-noescape class="json">
+            <pre><code class="language-json">
 {
   "global": { "files": "/src/**/*.*" },
   "syntax": { "version": "v755" },
@@ -211,7 +209,7 @@ src/
           </section>
           <section>
             <h3>CI pipeline</h3>
-            <pre><code data-trim data-noescape class="yaml">
+            <pre><code class="language-yaml">
 name: CI
 on: [push, pull_request]
 jobs:
@@ -299,16 +297,7 @@ jobs:
       </div>
     </div>
 
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
-    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
-    <script>
-      Reveal.initialize({
-        hash: true,
-        slideNumber: "c/t",
-        transition: "fade",
-        plugins: [RevealHighlight, RevealNotes],
-      });
-    </script>
+    <script src="js/highlight.js"></script>
+    <script src="js/deck.js"></script>
   </body>
 </html>
