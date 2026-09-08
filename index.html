@@ -51,7 +51,7 @@
               <p class="role">Heliconia Labs &middot; Copenhagen</p>
               <ul>
                 <li>Created abapGit and abaplint</li>
-                <li>open-abap &middot; running ABAP outside the system</li>
+                <li>open-abap &middot; running ABAP off-stack</li>
               </ul>
               <p class="contact">
                 <a href="https://github.com/larshp"><span class="icon icon-github"></span>@larshp</a>
@@ -155,20 +155,159 @@
           <p class="about-source"><a href="https://docs.abapgit.org/user-guide/reference/supported.html">abapGit supported object types</a> &middot; September 2026</p>
         </section>
 
-        <!-- 5 - Body of the talk, still to be written -->
-        <section data-state="draft" class="slide-draft">
-          <div class="draft-copy">
-            <p class="eyebrow">Work in progress</p>
-            <h2>Talk content</h2>
-            <p class="lead">The body of the talk goes here.</p>
+        <!-- 5 - Why? Oh why? section -->
+        <section data-state="why" class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">Why Git in ABAP?</p>
+            <h2>Why?<br /><span>Oh why?</span></h2>
+            <p>Code is only one part of a safe change.</p>
           </div>
-          <div class="terminal-status" aria-label="Draft status">
-            <span class="prompt">$</span><span>git status --short</span>
-            <strong>??</strong><span>content/outline.md</span>
-          </div>
+          <ol class="why-section-index">
+            <li><span>01</span>Quality built in</li>
+            <li><span>02</span>Shared engineering memory</li>
+            <li><span>03</span>Familiar security model</li>
+            <li><span>04</span>Visible clean core decisions</li>
+            <li><span>05</span>Release state you can see</li>
+          </ol>
+          <p class="why-section-source">Inspired by <a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Heliconia Labs Flow One-Pagers</a></p>
         </section>
 
-        <!-- 6 - Q&A / links -->
+        <!-- 6 - Quality built in -->
+        <section class="slide-why-content slide-quality">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 01</p>
+            <h2>Quality built in</h2>
+            <p>Every proposed change runs the same checks before review, transport, or production.</p>
+          </header>
+          <div class="why-flow" aria-label="Quality flow">
+            <article class="why-step">
+              <span>01</span>
+              <h3>Developer pushes</h3>
+              <p>ABAP source, configuration, documentation, and tests land together.</p>
+            </article>
+            <article class="why-step">
+              <span>02</span>
+              <h3>CI checks</h3>
+              <p>Static analysis, tests, security rules, and project policy run automatically.</p>
+            </article>
+            <article class="why-step">
+              <span>03</span>
+              <h3>Evidence returns</h3>
+              <p>Findings appear in the pull request while the change is still fresh.</p>
+            </article>
+            <article class="why-step">
+              <span>04</span>
+              <h3>Human approves</h3>
+              <p>Reviewers spend their time on architecture, business risk, and judgment.</p>
+            </article>
+          </div>
+          <div class="why-takeaway">
+            <strong>Earlier feedback</strong>
+            <p>Problems surface at commit and pull request time, not at the end of the transport path.</p>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
+        </section>
+
+        <!-- 7 - Shared engineering memory -->
+        <section class="slide-why-content slide-memory">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 02</p>
+            <h2>Shared engineering memory</h2>
+            <p>The repository keeps the code, discussion, checks, and decisions in one place.</p>
+          </header>
+          <div class="memory-layout">
+            <div class="memory-history" aria-label="Repository history">
+              <article>
+                <i></i><span>Commit</span>
+                <strong>What changed</strong>
+                <p>Source and configuration describe the exact delta.</p>
+              </article>
+              <article>
+                <i></i><span>Review</span>
+                <strong>Why it changed</strong>
+                <p>Comments and approvals preserve the reasoning.</p>
+              </article>
+              <article>
+                <i></i><span>Release</span>
+                <strong>Where it went</strong>
+                <p>Checks and release evidence connect intent to production.</p>
+              </article>
+            </div>
+            <div class="memory-benefits">
+              <article><strong>Discover</strong><p>Teams find existing packages, APIs, patterns, and owners.</p></article>
+              <article><strong>Learn</strong><p>New developers learn from real changes instead of tribal knowledge.</p></article>
+              <article><strong>Reuse</strong><p>Visible ownership and quality signals make shared components easier to trust.</p></article>
+              <blockquote>Rollback begins with knowing what changed and why.</blockquote>
+            </div>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
+        </section>
+
+        <!-- 8 - Security -->
+        <section class="slide-why-content slide-security">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 03</p>
+            <h2>Familiar security model</h2>
+            <p>The developer initiates the exchange. SAP calls out over HTTPS using existing access and authorizations.</p>
+          </header>
+          <div class="security-path" aria-label="Outbound connection from SAP to Git">
+            <div class="security-endpoint sap-endpoint"><span>SAP</span><strong>User acts</strong></div>
+            <div class="security-connection"><span>Outbound HTTPS</span><i></i></div>
+            <div class="security-endpoint git-endpoint"><span>Git</span><strong>Platform checks</strong></div>
+          </div>
+          <div class="security-facts">
+            <article><strong>No inbound connection</strong><p>No open ports or standing agents inside the SAP landscape.</p></article>
+            <article><strong>Existing controls apply</strong><p>SAP access, authorizations, TLS, and the outbound network path remain in charge.</p></article>
+            <article><strong>Typically no new infrastructure</strong><p>No additional SAP Basis setup, servers, or middleware to operate.</p></article>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Security</p>
+        </section>
+
+        <!-- 9 - Clean core -->
+        <section class="slide-why-content slide-clean-core">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 04</p>
+            <h2>Visible clean core decisions</h2>
+            <p>A pull request records the intent before an implementation choice becomes hard to reverse.</p>
+          </header>
+          <div class="core-decision" aria-label="Clean core decision paths">
+            <div class="core-center">
+              <span>Pull request</span>
+              <strong>Where should this change live?</strong>
+              <p>Reviewers see the code, context, owner, and checks together.</p>
+            </div>
+            <div class="core-options">
+              <article><span>01</span><strong>Standard configuration</strong></article>
+              <article><span>02</span><strong>ABAP extension</strong></article>
+              <article><span>03</span><strong>Side-by-side</strong></article>
+              <article><span>04</span><strong>Owned exception</strong></article>
+            </div>
+          </div>
+          <div class="core-result"><strong>Visible rationale lowers future upgrade risk.</strong><span>Rules and exceptions stay reviewable instead of disappearing into project documents.</span></div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Clean Core and Extension Governance</p>
+        </section>
+
+        <!-- 10 - Release visibility -->
+        <section class="slide-why-content slide-release">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 05</p>
+            <h2>Release state you can see</h2>
+            <p>Git turns a hidden transport queue into an observable change and release history.</p>
+          </header>
+          <div class="release-track" aria-label="Visible release flow">
+            <article><i></i><span>Change</span><strong>Captured</strong><p>Source, docs, and tests</p></article>
+            <article><i></i><span>Evidence</span><strong>Collected</strong><p>Checks and approvals</p></article>
+            <article><i></i><span>Sequence</span><strong>Compared</strong><p>Dependencies and order</p></article>
+            <article><i></i><span>Release</span><strong>Decided</strong><p>Known scope and risk</p></article>
+          </div>
+          <div class="release-outcomes">
+            <article><strong>Progress comes from engineering activity</strong><p>Teams see blocked reviews, failing checks, ownership gaps, and risky changes without maintaining another status deck.</p></article>
+            <article><strong>Recovery becomes deliberate</strong><p>Production state can be compared with reviewed source before proposing a controlled revert.</p></article>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
+        </section>
+
+        <!-- 11 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>
