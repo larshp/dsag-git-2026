@@ -232,8 +232,10 @@
 /* Speakers */
 
 .deck-slide.slide-speakers {
-  display: block;
-  padding: 56px 76px 52px 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 76px 108px 92px;
 }
 .slide-heading {
   display: flex;
