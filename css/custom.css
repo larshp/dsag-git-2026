@@ -37,6 +37,10 @@
   display: none;
 }
 
+.deck[data-slide-state="title"] .deck-progress {
+  display: none;
+}
+
 .deck[data-slide-state="content"] .deck-counter,
 .deck[data-slide-state="draft"] .deck-counter,
 .deck[data-slide-state="closing"] .deck-counter {
@@ -47,6 +51,18 @@
 
 .deck-counter {
   transform: translate(-16px, -12px);
+}
+
+.deck[data-slide-state="content"] .deck-progress::before,
+.deck[data-slide-state="draft"] .deck-progress::before,
+.deck[data-slide-state="closing"] .deck-progress::before {
+  background: rgba(23,63,87,.16);
+}
+
+.deck[data-slide-state="content"] .deck-progress-fill,
+.deck[data-slide-state="draft"] .deck-progress-fill,
+.deck[data-slide-state="closing"] .deck-progress-fill {
+  background: linear-gradient(90deg, var(--git), var(--blend) 58%, var(--dsag));
 }
 
 .deck[data-slide-state="content"],
@@ -330,34 +346,6 @@
 }
 .terminal-status .prompt,
 .terminal-status strong { color: var(--git-light); font-weight: 700; }
-.draft-graph {
-  position: absolute;
-  left: 84px;
-  right: 84px;
-  bottom: 58px;
-  height: 18px;
-}
-.draft-graph span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 8px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--git), rgba(23,63,87,.15), var(--dsag-light));
-}
-.draft-graph i {
-  position: absolute;
-  top: 2px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--git);
-  box-shadow: 0 0 0 5px var(--white);
-}
-.draft-graph i:nth-child(2) { left: 0; }
-.draft-graph i:nth-child(3) { left: 48%; background: #b74862; }
-.draft-graph i:nth-child(4) { right: 0; background: var(--dsag-light); }
-
 /* Closing */
 
 .deck-slide.slide-closing {
@@ -416,33 +404,6 @@
   font: 500 .32em/1.2 var(--mono);
   text-decoration: none;
 }
-.commit-finale {
-  position: absolute;
-  left: 104px;
-  right: 104px;
-  bottom: 52px;
-  height: 20px;
-}
-.commit-finale span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 9px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--git), var(--blend) 56%, rgba(23,63,87,.14));
-}
-.commit-finale i {
-  position: absolute;
-  left: 56%;
-  top: 1px;
-  width: 18px;
-  height: 18px;
-  border: 4px solid #f4dadd;
-  border-radius: 50%;
-  background: var(--git);
-  box-shadow: 0 0 0 2px var(--git);
-}
-
 /* Shared code styling for future slides */
 
 .deck-slide pre {

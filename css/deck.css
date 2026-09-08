@@ -157,19 +157,61 @@ body.deck-page {
 
 .deck-progress {
   position: absolute;
+  left: 104px;
+  right: 104px;
+  bottom: 43px;
+  z-index: 3;
+  height: 22px;
+  background: transparent;
+}
+
+.deck-progress::before {
+  content: "";
+  position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 3px;
+  top: 10px;
+  height: 2px;
   background: var(--chrome-rule);
 }
 
-.deck-progress > span {
-  display: block;
-  height: 100%;
+.deck-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 2px;
   width: 0;
   background: var(--chrome-accent);
   transition: width 240ms ease;
+}
+
+.deck-progress-commits {
+  position: absolute;
+  inset: 0;
+}
+
+.deck-progress-commits i {
+  position: absolute;
+  left: var(--commit-position);
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #d8e0e5;
+  box-shadow: 0 0 0 1px var(--chrome-rule);
+  transform: translateX(-50%);
+  transition: background 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.deck-progress-commits i.is-complete {
+  background: var(--chrome-accent);
+}
+
+.deck-progress-commits i.is-current {
+  box-shadow: 0 0 0 2px var(--chrome-accent), 0 0 0 7px rgba(240, 60, 46, 0.12);
+  transform: translateX(-50%) scale(1.18);
 }
 
 /* ---------- help overlay ------------------------------------------------ */

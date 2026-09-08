@@ -68,7 +68,16 @@
 
   var progress = document.createElement("div");
   progress.className = "deck-progress";
-  progress.innerHTML = "<span></span>";
+  progress.innerHTML =
+    '<span class="deck-progress-fill"></span>' +
+    '<div class="deck-progress-commits" aria-hidden="true">' +
+    flat
+      .map(function (_, index) {
+        var position = flat.length > 1 ? (index / (flat.length - 1)) * 100 : 100;
+        return '<i style="--commit-position:' + position + '%"></i>';
+      })
+      .join("") +
+    "</div>";
 
   var help = document.createElement("div");
   help.className = "deck-help";
@@ -107,7 +116,8 @@
   deck.appendChild(help);
 
   var counterEl = chrome.querySelector(".deck-counter");
-  var progressEl = progress.querySelector("span");
+  var progressEl = progress.querySelector(".deck-progress-fill");
+  var progressCommitEls = progress.querySelectorAll(".deck-progress-commits i");
 
   /* ---------- helpers --------------------------------------------------- */
 
@@ -174,6 +184,10 @@
     counterEl.textContent = index + 1 + " / " + flat.length;
     progressEl.style.width =
       (flat.length > 1 ? (index / (flat.length - 1)) * 100 : 100) + "%";
+    Array.prototype.forEach.call(progressCommitEls, function (commit, commitIndex) {
+      commit.classList.toggle("is-complete", commitIndex <= index);
+      commit.classList.toggle("is-current", commitIndex === index);
+    });
 
     writeHash();
   }
