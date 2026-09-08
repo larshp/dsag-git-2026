@@ -53,6 +53,13 @@ Open <http://localhost:8000/?print-pdf> and print to PDF from the browser
   the deck also works offline.
 - `assets/icons/` — [Bootstrap Icons](https://icons.getbootstrap.com) (MIT),
   the source files behind the `.icon-*` rules in `css/custom.css`.
+- `assets/slides-qr.svg` — QR code on the closing slide. If the published URL
+  ever changes, regenerate it (no dependency is added to the project):
+
+  ```sh
+  npx qrcode -t svg -e M -d 1D2D3E -o assets/slides-qr.svg \
+    "https://larshp.github.io/dsag-git-2026/"
+  ```
 
 ## Icons
 
