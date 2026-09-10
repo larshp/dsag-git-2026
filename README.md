@@ -39,6 +39,8 @@ slide can be linked to or reloaded without losing your place.
 - `js/deck.js` — the engine: scaling, navigation and overview.
 - `js/highlight.js` — syntax highlighting for `bash`, `json`, `yaml`, `diff`,
   `abap` and `text`.
+- `js/contributors.js` — the 10 September 2026 snapshot used to build the
+  linked contributor-avatar wall.
 - `css/deck.css` — engine styling: the 1280×720 stage, chrome and overview.
 - `css/custom.css` — typography, two-column layout, comparison table, code
   theme.
@@ -49,6 +51,8 @@ slide can be linked to or reloaded without losing your place.
   the abapGit wordmark is white instead of `#362701`, and the DSAG disc gains a
   `--dsag-light` ring — so they only read on a dark background. Re-download the
   originals before reusing them on a light slide.
+- `assets/contributors/` — vendored GitHub avatar thumbnails for the
+  contributor slide, so it also works offline.
 - `assets/icons/` — [Bootstrap Icons](https://icons.getbootstrap.com) (MIT),
   the source files behind the `.icon-*` rules in `css/custom.css`.
 - `assets/slides-qr.svg` — QR code on the closing slide. If the published URL
