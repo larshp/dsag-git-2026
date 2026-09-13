@@ -959,7 +959,15 @@
 
 .innersource-projects > p { color: var(--dsag); }
 
+/* One shared set of tracks. Each row used to size its own columns, so the
+   auto-width count column was 39px on the "1,930" row and 23px on the rest,
+   pushing that row's description 8px left of the others. Subgrid makes all
+   four rows measure together, which also gives the longest description the
+   room to stay on one line. */
 .innersource-projects ul {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -967,14 +975,20 @@
 
 .innersource-projects li {
   display: grid;
-  grid-template-columns: 1.2fr 1fr auto;
+  grid-column: 1 / -1;
+  /* Fixed fallback first, for a browser without subgrid: widest name is 81px,
+     widest count 39px. Browsers that do support it take the line below. */
+  grid-template-columns: 88px 1fr 40px;
+  grid-template-columns: subgrid;
   align-items: baseline;
-  gap: 10px;
   padding: 7px 0;
   border-top: 1px solid var(--rule);
   font-size: .3em;
   line-height: 1.2;
 }
+
+/* Right-align the counts: the shared column is as wide as "1,930". */
+.innersource-projects em { justify-self: end; }
 
 .innersource-projects li:first-child {
   border-top: 0;
