@@ -184,34 +184,22 @@
         <section class="slide-why-content slide-quality">
           <header class="why-heading">
             <p class="eyebrow">Reason 01</p>
-            <h2>Quality built in</h2>
-            <p>Every proposed change runs the same checks before review, transport, or production.</p>
+            <h2>Shift left</h2>
+            <p>A problem is cheapest the moment it is created. Git moves every check that can run early to the point where the change is still being written.</p>
           </header>
-          <div class="why-flow" aria-label="Quality flow">
-            <article class="why-step">
-              <span>01</span>
-              <h3>Developer pushes</h3>
-              <p>ABAP source, configuration, documentation, and tests land together.</p>
-            </article>
-            <article class="why-step">
-              <span>02</span>
-              <h3>CI checks</h3>
-              <p>Static analysis, tests, security rules, and project policy run automatically.</p>
-            </article>
-            <article class="why-step">
-              <span>03</span>
-              <h3>Evidence returns</h3>
-              <p>Findings appear in the pull request while the change is still fresh.</p>
-            </article>
-            <article class="why-step">
-              <span>04</span>
-              <h3>Human approves</h3>
-              <p>Reviewers spend their time on architecture, business risk, and judgment.</p>
-            </article>
+          <div class="shift-left">
+            <ol class="shift-rail" aria-label="When checks run during a change">
+              <li><i></i><span>Write</span></li>
+              <li class="is-now"><i></i><span>Commit</span></li>
+              <li class="is-now"><i></i><span>Pull request</span></li>
+              <li><i></i><span>Review</span></li>
+              <li><i></i><span>Release</span></li>
+            </ol>
+            <p class="shift-marker">Checks run here</p>
           </div>
           <div class="why-takeaway">
-            <strong>Earlier feedback</strong>
-            <p>Problems surface at commit and pull request time, not at the end of the transport path.</p>
+            <strong>Same checks, sooner</strong>
+            <p>Static analysis, unit tests and project rules do not change. What changes is when they run &mdash; while the author is still working on the change.</p>
           </div>
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
         </section>
@@ -272,7 +260,6 @@
             <div class="innersource-projects">
               <p>Popular public projects</p>
               <ul>
-                <li><a href="https://github.com/abapGit/abapGit"><strong>abapGit</strong></a><span>Git client</span><em>1,930</em></li>
                 <li><a href="https://github.com/abap2xlsx/abap2xlsx"><strong>abap2xlsx</strong></a><span>Excel from ABAP</span><em>872</em></li>
                 <li><a href="https://github.com/ABAP-Logger/ABAP-Logger"><strong>ABAP-Logger</strong></a><span>Application logging</span><em>397</em></li>
                 <li><a href="https://github.com/abap2ui5/abap2ui5"><strong>abap2ui5</strong></a><span>UI5 apps purely in ABAP</span><em>381</em></li>
@@ -420,7 +407,7 @@
             <p>An agent writes code far faster than a person can read it. Continuous integration is what keeps up.</p>
           </header>
           <div class="why-flow flow-three" aria-label="What CI does with a generated change">
-            <article class="why-step"><span>01</span><h3>It builds</h3><p>Syntax and activation checked on every push. abaplint does this without an SAP system.</p></article>
+            <article class="why-step"><span>01</span><h3>It builds</h3><p>Syntax and project rules checked on every push. abaplint does this without an SAP system.</p></article>
             <article class="why-step"><span>02</span><h3>It is tested</h3><p>ABAP Unit says whether the behaviour still holds, not only whether it compiles.</p></article>
             <article class="why-step"><span>03</span><h3>You hear back</h3><p>The verdict lands on the pull request in minutes.</p></article>
           </div>
@@ -482,7 +469,7 @@
 
         <!-- 21 - Sun -->
         <section data-state="why" class="slide-sun">
-          <div class="ambient ambient-sun" aria-hidden="true"></div>
+          <div class="ambient ambient-glow" aria-hidden="true"></div>
           <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sun">
             <circle class="sun-disc" cx="50" cy="50" r="18" />
             <g class="sun-rays">
@@ -502,7 +489,13 @@
           </svg>
         </section>
 
-        <!-- 22 - Public GitHub sponsors -->
+        <!-- 22 - Demo -->
+        <section data-state="why" class="slide-demo">
+          <div class="ambient ambient-glow" aria-hidden="true"></div>
+          <h2 class="demo-word">Demo<span>?</span></h2>
+        </section>
+
+        <!-- 23 - Public GitHub sponsors -->
         <section class="slide-sponsors">
           <div class="sponsor-heading">
             <p class="eyebrow">GitHub Sponsors</p>
@@ -553,7 +546,7 @@
           <p class="sponsor-source">Public sponsors on GitHub &middot; checked 8 September 2026</p>
         </section>
 
-        <!-- 23 - Q&A / links -->
+        <!-- 24 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>
