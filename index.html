@@ -171,10 +171,98 @@
           <p class="about-source"><a href="https://docs.abapgit.org/user-guide/other/where-used.html">Who Uses abapGit?</a> &middot; <a href="https://dotabap.org">dotabap.org</a> &middot; checked September 2026</p>
         </section>
 
-        <!-- 6 - Open source / innersource -->
-        <section class="slide-innersource">
+        <!-- 6 - Why? Oh why? section -->
+        <section data-state="why" class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">Why Git in ABAP?</p>
+            <h2>Why?<br /><span>Oh why?</span></h2>
+            <p>Code is only one part of a safe change.</p>
+          </div>
+          <ol class="why-section-index">
+            <li><span>01</span>Quality built in</li>
+            <li><span>02</span>Shared engineering memory</li>
+            <li><span>03</span>Open source / Innersource</li>
+            <li><span>04</span>Familiar security model</li>
+            <li><span>05</span>Visible clean core decisions</li>
+            <li><span>06</span>Release state you can see</li>
+          </ol>
+        </section>
+
+        <!-- 7 - Quality built in -->
+        <section class="slide-why-content slide-quality">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 01</p>
+            <h2>Quality built in</h2>
+            <p>Every proposed change runs the same checks before review, transport, or production.</p>
+          </header>
+          <div class="why-flow" aria-label="Quality flow">
+            <article class="why-step">
+              <span>01</span>
+              <h3>Developer pushes</h3>
+              <p>ABAP source, configuration, documentation, and tests land together.</p>
+            </article>
+            <article class="why-step">
+              <span>02</span>
+              <h3>CI checks</h3>
+              <p>Static analysis, tests, security rules, and project policy run automatically.</p>
+            </article>
+            <article class="why-step">
+              <span>03</span>
+              <h3>Evidence returns</h3>
+              <p>Findings appear in the pull request while the change is still fresh.</p>
+            </article>
+            <article class="why-step">
+              <span>04</span>
+              <h3>Human approves</h3>
+              <p>Reviewers spend their time on architecture, business risk, and judgment.</p>
+            </article>
+          </div>
+          <div class="why-takeaway">
+            <strong>Earlier feedback</strong>
+            <p>Problems surface at commit and pull request time, not at the end of the transport path.</p>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
+        </section>
+
+        <!-- 8 - Shared engineering memory -->
+        <section class="slide-why-content slide-memory">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 02</p>
+            <h2>Shared engineering memory</h2>
+            <p>The repository keeps the code, discussion, checks, and decisions in one place.</p>
+          </header>
+          <div class="memory-layout">
+            <div class="memory-history" aria-label="Repository history">
+              <article>
+                <i></i><span>Commit</span>
+                <strong>What changed</strong>
+                <p>Source and configuration describe the exact delta.</p>
+              </article>
+              <article>
+                <i></i><span>Review</span>
+                <strong>Why it changed</strong>
+                <p>Comments and approvals preserve the reasoning.</p>
+              </article>
+              <article>
+                <i></i><span>Release</span>
+                <strong>Where it went</strong>
+                <p>Checks and release evidence connect intent to production.</p>
+              </article>
+            </div>
+            <div class="memory-benefits">
+              <article><strong>Discover</strong><p>Teams find existing packages, APIs, patterns, and owners.</p></article>
+              <article><strong>Learn</strong><p>New developers learn from real changes instead of tribal knowledge.</p></article>
+              <article><strong>Reuse</strong><p>Visible ownership and quality signals make shared components easier to trust.</p></article>
+              <blockquote>Rollback begins with knowing what changed and why.</blockquote>
+            </div>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
+        </section>
+
+        <!-- 9 - Open source / innersource -->
+        <section class="slide-why-content slide-innersource">
           <div class="innersource-heading">
-            <p class="eyebrow">Same client, two audiences</p>
+            <p class="eyebrow">Reason 03</p>
             <h2>Open source / Innersource</h2>
             <p class="innersource-lead"><strong>Many ABAP developers are publishing in the open.</strong> But abapGit can stay entirely internal. No GitHub account required.</p>
           </div>
@@ -219,98 +307,10 @@
           <p class="about-source"><a href="https://stardev.io/languages/abap">stardev.io/languages/abap</a> &middot; checked September 2026</p>
         </section>
 
-        <!-- 7 - Why? Oh why? section -->
-        <section data-state="why" class="slide-why-section">
-          <div class="why-section-copy">
-            <p class="eyebrow">Why Git in ABAP?</p>
-            <h2>Why?<br /><span>Oh why?</span></h2>
-            <p>Code is only one part of a safe change.</p>
-          </div>
-          <ol class="why-section-index">
-            <li><span>01</span>Quality built in</li>
-            <li><span>02</span>Shared engineering memory</li>
-            <li><span>03</span>Familiar security model</li>
-            <li><span>04</span>Visible clean core decisions</li>
-            <li><span>05</span>Release state you can see</li>
-          </ol>
-          <p class="why-section-source">Inspired by <a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Heliconia Labs Flow One-Pagers</a></p>
-        </section>
-
-        <!-- 8 - Quality built in -->
-        <section class="slide-why-content slide-quality">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 01</p>
-            <h2>Quality built in</h2>
-            <p>Every proposed change runs the same checks before review, transport, or production.</p>
-          </header>
-          <div class="why-flow" aria-label="Quality flow">
-            <article class="why-step">
-              <span>01</span>
-              <h3>Developer pushes</h3>
-              <p>ABAP source, configuration, documentation, and tests land together.</p>
-            </article>
-            <article class="why-step">
-              <span>02</span>
-              <h3>CI checks</h3>
-              <p>Static analysis, tests, security rules, and project policy run automatically.</p>
-            </article>
-            <article class="why-step">
-              <span>03</span>
-              <h3>Evidence returns</h3>
-              <p>Findings appear in the pull request while the change is still fresh.</p>
-            </article>
-            <article class="why-step">
-              <span>04</span>
-              <h3>Human approves</h3>
-              <p>Reviewers spend their time on architecture, business risk, and judgment.</p>
-            </article>
-          </div>
-          <div class="why-takeaway">
-            <strong>Earlier feedback</strong>
-            <p>Problems surface at commit and pull request time, not at the end of the transport path.</p>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
-        </section>
-
-        <!-- 9 - Shared engineering memory -->
-        <section class="slide-why-content slide-memory">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 02</p>
-            <h2>Shared engineering memory</h2>
-            <p>The repository keeps the code, discussion, checks, and decisions in one place.</p>
-          </header>
-          <div class="memory-layout">
-            <div class="memory-history" aria-label="Repository history">
-              <article>
-                <i></i><span>Commit</span>
-                <strong>What changed</strong>
-                <p>Source and configuration describe the exact delta.</p>
-              </article>
-              <article>
-                <i></i><span>Review</span>
-                <strong>Why it changed</strong>
-                <p>Comments and approvals preserve the reasoning.</p>
-              </article>
-              <article>
-                <i></i><span>Release</span>
-                <strong>Where it went</strong>
-                <p>Checks and release evidence connect intent to production.</p>
-              </article>
-            </div>
-            <div class="memory-benefits">
-              <article><strong>Discover</strong><p>Teams find existing packages, APIs, patterns, and owners.</p></article>
-              <article><strong>Learn</strong><p>New developers learn from real changes instead of tribal knowledge.</p></article>
-              <article><strong>Reuse</strong><p>Visible ownership and quality signals make shared components easier to trust.</p></article>
-              <blockquote>Rollback begins with knowing what changed and why.</blockquote>
-            </div>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
-        </section>
-
         <!-- 10 - Security -->
         <section class="slide-why-content slide-security">
           <header class="why-heading">
-            <p class="eyebrow">Reason 03</p>
+            <p class="eyebrow">Reason 04</p>
             <h2>Familiar security model</h2>
             <p>The developer initiates the exchange. SAP calls out over HTTPS using existing access and authorizations.</p>
           </header>
@@ -330,7 +330,7 @@
         <!-- 11 - Clean core -->
         <section class="slide-why-content slide-clean-core">
           <header class="why-heading">
-            <p class="eyebrow">Reason 04</p>
+            <p class="eyebrow">Reason 05</p>
             <h2>Visible clean core decisions</h2>
             <p>A pull request records the intent before an implementation choice becomes hard to reverse.</p>
           </header>
@@ -354,7 +354,7 @@
         <!-- 12 - Release visibility -->
         <section class="slide-why-content slide-release">
           <header class="why-heading">
-            <p class="eyebrow">Reason 05</p>
+            <p class="eyebrow">Reason 06</p>
             <h2>Release state you can see</h2>
             <p>Git turns a hidden transport queue into an observable change and release history.</p>
           </header>
@@ -371,7 +371,29 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
         </section>
 
-        <!-- 13 - Public GitHub sponsors -->
+        <!-- 13 - Sun -->
+        <section data-state="why" class="slide-sun">
+          <div class="ambient ambient-sun" aria-hidden="true"></div>
+          <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sun">
+            <circle class="sun-disc" cx="50" cy="50" r="18" />
+            <g class="sun-rays">
+              <line x1="50" y1="10" x2="50" y2="24" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(30 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(60 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(90 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(120 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(150 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(180 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(210 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(240 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(270 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(300 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(330 50 50)" />
+            </g>
+          </svg>
+        </section>
+
+        <!-- 14 - Public GitHub sponsors -->
         <section class="slide-sponsors">
           <div class="sponsor-heading">
             <p class="eyebrow">GitHub Sponsors</p>
@@ -422,7 +444,7 @@
           <p class="sponsor-source">Public sponsors on GitHub &middot; checked 8 September 2026</p>
         </section>
 
-        <!-- 14 - Q&A / links -->
+        <!-- 15 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>
