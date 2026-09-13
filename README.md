@@ -6,22 +6,28 @@ no build step, no runtime dependencies.
 
 ## Run locally
 
+Open `index.html` straight from disk. Everything works over `file://`,
+including the icons and the vendored avatars, so there is nothing to install.
+
+To serve it over HTTP instead, any static server will do:
+
 ```sh
-npm install        # only for http-server; the deck itself has no dependencies
-npm start          # serves on http://localhost:8000
+python -m http.server 8000    # then open http://localhost:8000
+npx http-server -p 8000       # or this, if you prefer node
 ```
 
-Any static server works, and opening `index.html` straight from disk works too.
+There is no `package.json` — the deck has no dependencies and nothing to build.
 
 ## Presenting
 
 | Key | Action |
 | --- | --- |
-| `→` / `space` | next slide (or next fragment) |
-| `←` | previous slide |
+| `→` / `space` / `n` | next slide (or next fragment) |
+| `←` / `shift`+`space` / `p` | previous slide |
 | `↓` / `↑` | move within a vertical stack |
 | `home` / `end` | first / last slide |
 | `o` / `esc` | slide overview — click a slide to jump to it |
+| `enter` | leave the overview |
 | `b` / `.` | blank the screen |
 | `f` | fullscreen |
 | `?` | keyboard help |
@@ -40,19 +46,22 @@ slide can be linked to or reloaded without losing your place.
 - `js/highlight.js` — syntax highlighting for `bash`, `json`, `yaml`, `diff`,
   `abap` and `text`.
 - `js/contributors.js` — the 10 September 2026 snapshot used to build the
-  linked contributor-avatar wall.
+  linked contributor-avatar wall. The array is GitHub's raw list; bot accounts
+  stay in it but are filtered out before rendering, and the headline count on
+  the slide is derived from what actually renders, so the two cannot drift.
 - `css/deck.css` — engine styling: the 1280×720 stage, chrome and overview.
-- `css/custom.css` — typography, two-column layout, comparison table, code
-  theme.
-- `assets/` — images and demo fallback screenshots, plus the two title-slide
-  logos: `abapgit-logo.svg` (from the abapGit repo, MIT) and `dsag-logo.svg`
-  (DSAG trademark, from Wikimedia). They are vendored rather than hot-linked so
-  the deck also works offline. Both are recoloured for the dark title slide —
-  the abapGit wordmark is white instead of `#362701`, and the DSAG disc gains a
-  `--dsag-light` ring — so they only read on a dark background. Re-download the
-  originals before reusing them on a light slide.
+- `css/custom.css` — typography, the per-slide layouts, and the code theme
+  (the `.tok-*` classes that `js/highlight.js` emits).
+- `assets/` — the two title-slide logos: `abapgit-logo.svg` (from the abapGit
+  repo, MIT) and `dsag-logo.svg` (DSAG trademark, from Wikimedia). They are
+  vendored rather than hot-linked so the deck also works offline. Both are
+  recoloured for the dark title slide — the abapGit wordmark is white instead
+  of `#362701`, and the DSAG disc gains a lighter ring (`#5f8ca4`, the value
+  `--dsag-light` also carries) — so they only read on a dark background.
+  Re-download the originals before reusing them on a light slide.
 - `assets/contributors/` — vendored GitHub avatar thumbnails for the
   contributor slide, so it also works offline.
+- `assets/sponsors/` — the same, for the sponsors slide.
 - `assets/icons/` — [Bootstrap Icons](https://icons.getbootstrap.com) (MIT),
   the source files behind the `.icon-*` rules in `css/custom.css`.
 - `assets/slides-qr.svg` — QR code on the closing slide. If the published URL
@@ -65,20 +74,17 @@ slide can be linked to or reloaded without losing your place.
 
 ## Icons
 
-Icons are written as `<span class="icon icon-github"></span>`. They are drawn
-as a CSS mask filled with `currentColor`, so an icon always takes the colour of
-the text it sits in — no icon font, no JavaScript, nothing to load.
+Icons are written as `<span class="icon icon-github"></span>`. Each `.icon-*`
+rule points a `background-image` at the matching SVG in `assets/icons/`, and
+`.icon` sizes it to `1em` so an icon scales with the text it sits next to.
+
+The SVGs carry their own colour, so an icon does *not* follow `currentColor` —
+to change a colour, edit the SVG.
 
 Available: `icon-github`, `icon-linkedin`, `icon-x`, `icon-bluesky`.
 
 To add one, download it from Bootstrap Icons into `assets/icons/`, then add a
-rule to `css/custom.css` next to the others. The rules embed the SVG as a
-`data:` URI rather than pointing at the file, because a browser refuses to load
-an external mask image when the deck is opened straight from disk (`file://`) —
-the icons would silently disappear. `assets/icons/` keeps the originals so a
-rule can be regenerated or an icon swapped.
-
-Content still to write is marked `TODO` in `index.html`.
+rule to `css/custom.css` next to the others.
 
 ## Writing slides
 
@@ -98,6 +104,9 @@ Content still to write is marked `TODO` in `index.html`.
   <section><h3>Detail</h3></section>
 </section>
 ```
+
+Each slide carries a `<!-- n - name -->` comment giving its position in the
+deck. Reordering slides means renumbering those comments.
 
 Code blocks pick their language from the class and are re-indented
 automatically, so they can sit at any indentation in the HTML:

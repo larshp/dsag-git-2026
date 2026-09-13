@@ -9,10 +9,8 @@
   --dsag: #173f57;
   --dsag-light: #5f8ca4;
   --blend: #a34865;
-  --deep: #071721;
   --ink: #112b3b;
   --muted: #5b7080;
-  --paper: #fff;
   --white: #fff;
   --rule: rgba(23, 63, 87, 0.16);
   --mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
@@ -69,7 +67,6 @@
 }
 
 .deck[data-slide-state="content"] .deck-counter,
-.deck[data-slide-state="draft"] .deck-counter,
 .deck[data-slide-state="closing"] .deck-counter {
   display: inline;
   color: rgba(23,63,87,.65);
@@ -81,19 +78,16 @@
 }
 
 .deck[data-slide-state="content"] .deck-progress::before,
-.deck[data-slide-state="draft"] .deck-progress::before,
 .deck[data-slide-state="closing"] .deck-progress::before {
   background: rgba(23,63,87,.16);
 }
 
 .deck[data-slide-state="content"] .deck-progress-fill,
-.deck[data-slide-state="draft"] .deck-progress-fill,
 .deck[data-slide-state="closing"] .deck-progress-fill {
   background: linear-gradient(90deg, var(--git), var(--blend) 58%, var(--dsag));
 }
 
 .deck[data-slide-state="content"],
-.deck[data-slide-state="draft"],
 .deck[data-slide-state="closing"] {
   background:
     radial-gradient(circle at 94% 5%, rgba(240,60,46,.06), transparent 30%),
@@ -102,7 +96,6 @@
 }
 
 .deck[data-slide-state="content"]::after,
-.deck[data-slide-state="draft"]::after,
 .deck[data-slide-state="closing"]::after {
   content: "";
   position: absolute;
@@ -612,6 +605,33 @@
   font-weight: 720;
 }
 
+/* The one word the slide is arguing for. */
+.about-definition strong em {
+  color: var(--git);
+  font-style: normal;
+}
+
+/* Same shape as .about-update below, in the accent colour. */
+.about-scope {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 14px;
+  color: var(--git);
+  font: 680 .76em/1.2 var(--mono);
+}
+
+.about-scope > span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--git);
+  font: 700 11px/1 var(--mono);
+}
+
 .about-update {
   display: flex;
   align-items: center;
@@ -663,8 +683,6 @@
 }
 
 .about-metric strong,
-.about-metric span { display: block; }
-
 .about-metric strong {
   color: currentColor;
   font-size: 1.16em;
@@ -673,6 +691,7 @@
 }
 
 .about-metric span {
+  display: block;
   margin-top: 14px;
   color: var(--ink);
   font: 640 .33em/1.2 var(--mono);
@@ -684,7 +703,9 @@
 
 .about-lower {
   display: grid;
-  grid-template-columns: .92fr 1.08fr;
+  /* Even split: the tag column needs the width to hold its rows at three and
+     two, and the contribute box reads fine at the narrower size. */
+  grid-template-columns: 1fr 1fr;
   gap: 22px;
   margin-top: 22px;
 }
@@ -696,6 +717,8 @@
 }
 
 .about-capabilities {
+  display: flex;
+  flex-direction: column;
   padding: 18px 24px;
   border: 1px solid rgba(240,60,46,.15);
   background: linear-gradient(105deg, rgba(240,60,46,.095), rgba(240,60,46,.025));
@@ -709,18 +732,25 @@
   text-transform: uppercase;
 }
 
+/* Five tags are wider than this column, so they wrap onto two rows rather than
+   being shrunk until the labels break mid-phrase. flex:1 + align-content let
+   those rows centre in the height the grid row forces on us. */
 .capability-tags {
   display: flex;
-  gap: 12px;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 10px;
 }
 
 .capability-tags span {
-  padding: 7px 13px;
+  padding: 8px 14px;
   border-radius: 999px;
   color: var(--ink);
   background: var(--white);
   box-shadow: 0 3px 10px rgba(23,63,87,.07);
   font: 650 .3em/1 var(--mono);
+  white-space: nowrap;
 }
 
 .about-contribute {
@@ -740,50 +770,6 @@
 }
 
 .about-contribute strong { color: var(--git-light); }
-
-.branch-mark {
-  position: relative;
-  flex: 0 0 64px;
-  height: 42px;
-}
-
-.branch-mark::before,
-.branch-mark::after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  width: 43px;
-  border: 2px solid rgba(255,255,255,.62);
-  border-left: 0;
-}
-
-.branch-mark::before {
-  top: 9px;
-  height: 23px;
-  border-bottom: 0;
-  border-radius: 0 18px 0 0;
-}
-
-.branch-mark::after {
-  top: 21px;
-  height: 12px;
-  border-top: 0;
-  border-radius: 0 0 18px 0;
-}
-
-.branch-mark i {
-  position: absolute;
-  z-index: 1;
-  width: 10px;
-  height: 10px;
-  border: 3px solid var(--dsag);
-  border-radius: 50%;
-  background: var(--git-light);
-}
-
-.branch-mark i:nth-child(1) { left: 1px; top: 16px; }
-.branch-mark i:nth-child(2) { right: 1px; top: 3px; }
-.branch-mark i:nth-child(3) { right: 1px; bottom: 3px; }
 
 .about-source {
   position: absolute;
@@ -877,6 +863,12 @@
   padding: 58px 92px 92px;
 }
 
+/* Keeps its own tighter bottom padding; centring now comes from
+   .slide-why-content, which this slide also carries. */
+.deck-slide.slide-why-content.slide-innersource {
+  padding-bottom: 92px;
+}
+
 .innersource-heading { max-width: 1040px; }
 .innersource-heading .eyebrow { margin-bottom: 15px; }
 .innersource-heading h2 { font-size: 1.4em; }
@@ -921,7 +913,15 @@
 
 .innersource-projects > p { color: var(--dsag); }
 
+/* One shared set of tracks. Each row used to size its own columns, so the
+   auto-width count column was 39px on the "1,930" row and 23px on the rest,
+   pushing that row's description 8px left of the others. Subgrid makes all
+   four rows measure together, which also gives the longest description the
+   room to stay on one line. */
 .innersource-projects ul {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -929,9 +929,13 @@
 
 .innersource-projects li {
   display: grid;
-  grid-template-columns: 1.2fr 1fr auto;
+  grid-column: 1 / -1;
+  /* Fixed fallback first, for a browser without subgrid: widest name is 81px
+     ("ABAP-Logger"), and 40px holds a four-digit count if one is added back.
+     Browsers that do support subgrid take the line below and self-size. */
+  grid-template-columns: 88px 1fr 40px;
+  grid-template-columns: subgrid;
   align-items: baseline;
-  gap: 10px;
   padding: 7px 0;
   border-top: 1px solid var(--rule);
   font-size: .3em;
@@ -952,7 +956,9 @@
 
 .innersource-projects span { color: var(--muted); }
 
+/* Right-align the counts: the shared column is as wide as "1,930". */
 .innersource-projects em {
+  justify-self: end;
   color: var(--git);
   font: 680 1em/1 var(--mono);
   font-style: normal;
@@ -997,13 +1003,176 @@
   line-height: 1.32;
 }
 
+/* Git and the agents - sparse chapter slides, one point each. */
+
+.source-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  margin-top: 52px;
+}
+
+.source-card {
+  display: block;
+  padding: 26px 30px 28px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 14px 30px rgba(23,63,87,.08);
+  text-decoration: none;
+}
+
+.source-name {
+  margin: 0;
+  color: var(--git);
+  font: 780 .31em/1 var(--mono);
+  text-transform: uppercase;
+}
+
+.source-card + .source-card .source-name { color: var(--dsag); }
+
+.source-url {
+  margin: 14px 0 0;
+  color: var(--ink);
+  font: 720 .36em/1.2 var(--mono);
+}
+
+.source-what {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: .28em;
+  line-height: 1.42;
+}
+
+.agents-path {
+  display: grid;
+  grid-template-columns: 1fr 210px 1fr;
+  align-items: center;
+  gap: 26px;
+  margin: 52px 40px 0;
+}
+
+.agents-stage {
+  min-height: 116px;
+  padding: 23px 28px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 14px 30px rgba(23,63,87,.08);
+}
+
+.agents-stage span {
+  display: block;
+  color: var(--git);
+  font: 780 .31em/1 var(--mono);
+  text-transform: uppercase;
+}
+
+.agents-stage.stage-repo span { color: var(--dsag); }
+
+.agents-stage strong {
+  display: block;
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: .42em;
+}
+
+.agents-arrow {
+  position: relative;
+  height: 70px;
+  text-align: center;
+}
+
+.agents-arrow span {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--dsag);
+  background: var(--white);
+  font: 720 .26em/1 var(--mono);
+}
+
+.agents-arrow i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 39px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--git), var(--blend), var(--dsag));
+}
+
+.agents-arrow i::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  border-width: 7px 0 7px 11px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--dsag);
+}
+
+/* Slides carrying a single statement rather than a row of items. Centring now
+   comes from .slide-why-content itself; this only sizes the quote up to fill
+   the frame it has to itself. */
+.slide-sparse .agents-quote {
+  margin-top: 44px;
+  font-size: .62em;
+}
+
+/* Three steps instead of four, and tighter, since these slides carry a
+   takeaway bar under the flow. */
+.why-flow.flow-three {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 56px;
+}
+
+.why-flow.flow-three .why-step { min-height: 128px; }
+
+/* What lives in the repository - labels only, no gloss per item. */
+.agents-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 56px;
+}
+
+.agents-context span {
+  padding: 10px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: 0 3px 10px rgba(23,63,87,.07);
+  font: 650 .32em/1 var(--mono);
+  white-space: nowrap;
+}
+
+.agents-quote {
+  max-width: 900px;
+  margin: 52px 0 0;
+  color: var(--ink);
+  font-size: .54em;
+  line-height: 1.34;
+  letter-spacing: -.015em;
+}
+
+.agents-quote cite {
+  display: block;
+  margin-top: 16px;
+  color: var(--muted);
+  font: 650 .42em/1 var(--mono);
+  font-style: normal;
+}
+
 /* Why? Oh why? */
 
+/* Chapter dividers carry only the copy now, so a single centred column rather
+   than the old two-column split with a contents list on the right. */
 .deck-slide.slide-why-section {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 74px 100px 104px;
   color: var(--white);
 }
@@ -1032,50 +1201,57 @@
   line-height: 1.45;
 }
 
-.why-section-index {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: none;
-}
-
-.why-section-index li {
+/* Interlude: same dark treatment as the title and "Why? Oh why?" slides
+   (data-state="why" supplies the gradient), carrying just the mark. */
+.deck-slide.slide-sun,
+.deck-slide.slide-demo {
   display: grid;
-  grid-template-columns: 54px 1fr;
-  align-items: center;
-  gap: 19px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,.13);
-  color: rgba(255,255,255,.92);
-  font-size: .39em;
-  font-weight: 650;
+  place-items: center;
+  padding: 74px 100px 104px;
+  color: var(--white);
 }
 
-.why-section-index li:first-child {
-  border-top: 1px solid rgba(255,255,255,.13);
+.demo-word {
+  font-size: 2.4em;
+  letter-spacing: -.055em;
+  color: var(--white);
 }
 
-.why-section-index li span {
-  color: var(--git-light);
-  font: 720 .76em/1 var(--mono);
-  letter-spacing: .08em;
+.demo-word span { color: var(--git-light); }
+
+.ambient-glow {
+  left: 50%;
+  top: 50%;
+  width: 640px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,121,109,.24), transparent 62%);
 }
 
-.why-section-source {
-  position: absolute;
-  right: 100px;
-  bottom: 76px;
-  margin: 0;
-  color: rgba(255,255,255,.42);
-  font: 520 .24em/1.2 var(--mono);
+.sun {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+  filter: drop-shadow(0 0 42px rgba(255,121,109,.42));
 }
 
-.why-section-source a { color: inherit; text-decoration: none; }
+.sun-disc { fill: var(--git-light); }
 
+.sun-rays {
+  stroke: var(--git-light);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* Centred, not top-aligned: these slides carry very different amounts of body,
+   so pinning them to the top left anything short stranded above a deep void.
+   The bottom padding is larger than the top, so content still sits a touch
+   above true centre, which is what you want optically. */
 .deck-slide.slide-why-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 58px 92px 100px;
 }
 
@@ -1101,6 +1277,96 @@
   color: var(--muted);
   font-size: .4em;
   line-height: 1.45;
+}
+
+/* Shift left: one rail of the stages a change passes through, with the early
+   ones live. The outer grid and the rail share the same five tracks, so the
+   marker below can be placed under the stages it belongs to. */
+.shift-left {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 12px;
+  margin-top: 52px;
+}
+
+.shift-rail {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shift-rail::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 11px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--git), var(--blend) 48%, rgba(23,63,87,.18));
+}
+
+.shift-rail li {
+  position: relative;
+  text-align: center;
+}
+
+.shift-rail li i {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: inset 0 0 0 3px rgba(23,63,87,.22);
+}
+
+.shift-rail li.is-now i {
+  background: var(--git);
+  box-shadow: 0 0 0 5px rgba(240,60,46,.16);
+}
+
+.shift-rail li span {
+  display: block;
+  margin-top: 15px;
+  color: var(--muted);
+  font: 650 .3em/1.2 var(--mono);
+}
+
+.shift-rail li.is-now span {
+  color: var(--ink);
+  font-weight: 720;
+}
+
+/* An annotation bracketing the two live stages, not a filled bar - a solid
+   block here fights the dark takeaway bar directly below it. */
+.shift-marker {
+  position: relative;
+  grid-column: 2 / 4;
+  margin: 0;
+  padding-top: 22px;
+  color: var(--git);
+  font: 700 .26em/1.2 var(--mono);
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.shift-marker::before {
+  content: "";
+  position: absolute;
+  /* The marker spans two of the five tracks, so the two dots it brackets sit
+     at 25% and 75% of its width. */
+  left: 25%;
+  right: 25%;
+  top: 0;
+  height: 11px;
+  border: 2px solid rgba(240,60,46,.5);
+  border-top: 0;
+  border-radius: 0 0 6px 6px;
 }
 
 .why-flow {
@@ -1202,10 +1468,9 @@
 
 /* Shared memory */
 
+/* Single column since the reuse/onboarding half moved to the innersource
+   slide, which was already making the same points. */
 .memory-layout {
-  display: grid;
-  grid-template-columns: 1.03fr .97fr;
-  gap: 72px;
   margin-top: 36px;
 }
 
@@ -1270,42 +1535,6 @@
   line-height: 1.35;
 }
 
-.memory-benefits {
-  border-left: 1px solid var(--rule);
-  padding-left: 44px;
-}
-
-.memory-benefits article {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 18px;
-  padding: 10px 0 15px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.memory-benefits strong {
-  color: var(--git);
-  font: 740 .31em/1.3 var(--mono);
-}
-
-.memory-benefits article:nth-child(2) strong { color: var(--blend); }
-.memory-benefits article:nth-child(3) strong { color: var(--dsag); }
-
-.memory-benefits p {
-  margin: 0;
-  color: var(--ink);
-  font-size: .29em;
-  line-height: 1.35;
-}
-
-.memory-benefits blockquote {
-  margin: 17px 0 0;
-  color: var(--dsag);
-  font-size: .36em;
-  font-weight: 720;
-  line-height: 1.25;
-}
-
 /* Security */
 
 .security-path {
@@ -1325,10 +1554,8 @@
   box-shadow: 0 14px 30px rgba(23,63,87,.08);
 }
 
-.security-endpoint span,
-.security-endpoint strong { display: block; }
-
 .security-endpoint span {
+  display: block;
   color: var(--git);
   font: 780 .31em/1 var(--mono);
   text-transform: uppercase;
@@ -1337,6 +1564,7 @@
 .git-endpoint span { color: var(--dsag); }
 
 .security-endpoint strong {
+  display: block;
   margin-top: 16px;
   color: var(--ink);
   font-size: .42em;
@@ -1379,27 +1607,33 @@
   border-color: transparent transparent transparent var(--dsag);
 }
 
-.security-facts {
+.security-facts,
+.agents-facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 38px;
   margin-top: 40px;
 }
 
-.security-facts article {
+.security-facts article,
+.agents-facts article {
   padding-top: 18px;
   border-top: 4px solid var(--git);
 }
 
-.security-facts article:nth-child(2) { border-color: var(--blend); }
-.security-facts article:nth-child(3) { border-color: var(--dsag); }
+.security-facts article:nth-child(2),
+.agents-facts article:nth-child(2) { border-color: var(--blend); }
+.security-facts article:nth-child(3),
+.agents-facts article:nth-child(3) { border-color: var(--dsag); }
 
-.security-facts strong {
+.security-facts strong,
+.agents-facts strong {
   color: var(--ink);
   font-size: .35em;
 }
 
-.security-facts p {
+.security-facts p,
+.agents-facts p {
   margin: 9px 0 0;
   color: var(--muted);
   font-size: .28em;
@@ -1631,6 +1865,8 @@
   background: var(--git);
 }
 .links li + li a::before { background: var(--dsag-light); }
+/* Three links read as the deck's git -> blend -> dsag progression. */
+.links li:nth-child(2) a::before { background: var(--blend); }
 .qr { justify-self: center; text-align: center; }
 .qr-frame {
   width: 246px;

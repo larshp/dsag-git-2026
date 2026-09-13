@@ -1,6 +1,7 @@
 /*
   Snapshot of GitHub's contributor list for abapGit/abapGit.
   Generated 10 September 2026. Avatars are vendored in assets/contributors.
+  Bot accounts are kept in the data but filtered out before rendering.
 */
 (function () {
   "use strict";
@@ -202,11 +203,21 @@
   var wall = document.querySelector("[data-contributor-wall]");
   if (!wall) return;
 
-  wall.innerHTML = contributors
+  // The array above is GitHub's raw list, bots included. The slide thanks
+  // people, so they are filtered here rather than deleted from the snapshot —
+  // a regenerated snapshot then stays bot-free without re-editing it.
+  var people = contributors.filter(function (contributor) {
+    return contributor[2] !== "Bot";
+  });
+
+  // Derived, so the headline count cannot drift from the wall it describes.
+  var count = document.querySelector("[data-contributor-count]");
+  if (count) count.textContent = people.length;
+
+  wall.innerHTML = people
     .map(function (contributor) {
       var login = contributor[0];
       var id = contributor[1];
-      var type = contributor[2];
       var contributions = contributor[3];
       var profile = contributor[4];
       var label =
@@ -214,8 +225,7 @@
         login +
         " on GitHub, " +
         contributions +
-        (contributions === 1 ? " contribution" : " contributions") +
-        (type === "Bot" ? ", bot account" : "");
+        (contributions === 1 ? " contribution" : " contributions");
 
       return (
         '<a class="contributor" href="' +

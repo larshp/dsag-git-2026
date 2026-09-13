@@ -28,7 +28,6 @@
             <span class="logo-divider" aria-hidden="true"></span>
             <img class="logo-dsag" src="assets/dsag-logo.svg" alt="DSAG" />
           </div>
-          <!-- TODO: session number, date/room. -->
         </section>
 
         <!-- 2 - Who we are -->
@@ -36,8 +35,8 @@
           <div class="slide-heading">
             <h2>Who we are</h2>
           </div>
-          <div class="cols people">
-            <article class="speaker speaker-marc">
+          <div class="people">
+            <article class="speaker">
               <h3>Marc Bernard</h3>
               <p class="role">apm.to Inc. &middot; Toronto</p>
               <ul>
@@ -69,7 +68,434 @@
           <!-- Keep this short - 60 seconds total, then move on. -->
         </section>
 
-        <!-- 3 - Public GitHub sponsors -->
+        <!-- 3 - abapGit contributors -->
+        <section class="slide-contributors">
+          <header class="contributors-heading">
+            <div>
+              <p class="eyebrow">Open source, built together</p>
+              <h2>Thanks to every contributor</h2>
+            </div>
+            <p class="contributors-count"><strong data-contributor-count>187</strong><span>GitHub accounts</span></p>
+          </header>
+          <div class="contributor-wall" data-contributor-wall aria-label="GitHub contributors to abapGit"></div>
+          <footer class="contributors-footer">
+            <span>Select an avatar to open its GitHub profile.</span>
+            <a href="https://github.com/abapGit/abapGit/graphs/contributors">abapGit/abapGit contributors</a>
+            <span>Checked 10 September 2026</span>
+          </footer>
+        </section>
+
+        <!-- 4 - What is abapGit? -->
+        <section class="slide-about-abapgit">
+          <div class="about-heading">
+            <p class="eyebrow">A tool for ABAP developers</p>
+            <h2>What is abapGit?</h2>
+            <p class="about-definition"><strong>An open-source Git client for ABAP <em>development</em>.</strong> It turns SAP development objects into files you can branch, review, share, and automate.<span class="about-scope"><span aria-hidden="true">&lt;/&gt;</span> For developers, in the development system.</span><span class="about-update"><span aria-hidden="true">↻</span> A developer can update it at any time.</span></p>
+          </div>
+
+          <div class="about-metrics" aria-label="abapGit at a glance">
+            <article class="about-metric metric-orange">
+              <strong>10+</strong>
+              <span>years of stability</span>
+            </article>
+            <article class="about-metric metric-blend">
+              <strong>7.02+</strong>
+              <span>SAP_BASIS support</span>
+            </article>
+            <article class="about-metric metric-blue">
+              <strong>167+</strong>
+              <span>object types</span>
+            </article>
+          </div>
+
+          <div class="about-lower">
+            <div class="about-capabilities">
+              <p>Beyond source code</p>
+              <div class="capability-tags">
+                <span>Table contents</span>
+                <span>Customizing</span>
+                <span>Offline support (ZIP)</span>
+                <span>Background mode</span>
+                <span>User exits</span>
+              </div>
+            </div>
+            <div class="about-contribute">
+              <p><strong>Get started</strong> by installing the <a href="https://docs.abapgit.org/user-guide/getting-started/installation.html">abapGit program</a>.</p>
+              <p><strong>Missing something?</strong> Open a PR and make it available to everyone.</p>
+            </div>
+          </div>
+
+          <p class="about-source"><a href="https://docs.abapgit.org/user-guide/reference/supported.html">abapGit supported object types</a> &middot; September 2026</p>
+        </section>
+
+        <!-- 5 - Who uses abapGit? -->
+        <section class="slide-adoption">
+          <div class="adoption-heading">
+            <p class="eyebrow">Adoption</p>
+            <h2>Who uses abapGit?</h2>
+            <p class="adoption-lead"><strong>49 organisations have put their name on the record</strong> &mdash; customers, SAP itself, and consulting partners, each added to the abapGit docs by pull request. <a href="https://dotabap.org">dotabap.org</a> counts the ABAP they publish openly.</p>
+          </div>
+
+          <div class="about-metrics" aria-label="abapGit adoption at a glance">
+            <article class="about-metric metric-orange">
+              <strong>2.4m</strong>
+              <span>lines of open-source ABAP</span>
+            </article>
+            <article class="about-metric metric-blend">
+              <strong>341</strong>
+              <span>projects indexed</span>
+            </article>
+            <article class="about-metric metric-blue">
+              <strong>49</strong>
+              <span>organisations named</span>
+            </article>
+          </div>
+
+          <div class="adoption-users">
+            <div class="adoption-group">
+              <p class="adoption-label">Customers</p>
+              <p class="adoption-names">Schwarz Group &middot; Hansgrohe &middot; Linde Engineering &middot; Endress+Hauser &middot; RheinEnergie &middot; bonprix &middot; Haufe Group &middot; GEZE &middot; City of Zurich</p>
+            </div>
+            <div class="adoption-group">
+              <p class="adoption-label">SAP</p>
+              <p class="adoption-names">SAP IBSO &middot; SAP Labs Czech Republic</p>
+            </div>
+            <div class="adoption-group">
+              <p class="adoption-label">Consulting &amp; partners</p>
+              <p class="adoption-names">abat &middot; adesso &middot; CQSE &middot; Hochfrequenz &middot; rku.it &middot; objective partner &middot; Microsoft Azure</p>
+            </div>
+          </div>
+
+          <p class="adoption-invisible"><strong>And the part nobody can count.</strong> The list is self-reported and internal repositories never appear anywhere &mdash; every number here is a floor.</p>
+
+          <p class="about-source"><a href="https://docs.abapgit.org/user-guide/other/where-used.html">Who Uses abapGit?</a> &middot; <a href="https://dotabap.org">dotabap.org</a> &middot; checked September 2026</p>
+        </section>
+
+        <!-- 6 - Why? Oh why? section -->
+        <section data-state="why" class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">Why Git in ABAP?</p>
+            <h2>Why?<br /><span>Oh why?</span></h2>
+            <p>Code is only one part of a safe change.</p>
+          </div>
+        </section>
+
+        <!-- 7 - Quality built in -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 01</p>
+            <h2>Shift left</h2>
+            <p>A problem is cheapest the moment it is created. Git moves every check that can run early to the point where the change is still being written.</p>
+          </header>
+          <div class="shift-left">
+            <ol class="shift-rail" aria-label="When checks run during a change">
+              <li><i></i><span>Write</span></li>
+              <li class="is-now"><i></i><span>Commit</span></li>
+              <li class="is-now"><i></i><span>Pull request</span></li>
+              <li><i></i><span>Review</span></li>
+              <li><i></i><span>Release</span></li>
+            </ol>
+            <p class="shift-marker">Checks run here</p>
+          </div>
+          <div class="why-takeaway">
+            <strong>Same checks, sooner</strong>
+            <p>Static analysis, unit tests and project rules do not change. What changes is when they run &mdash; while the author is still working on the change.</p>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
+        </section>
+
+        <!-- 8 - Shared engineering memory -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 02</p>
+            <h2>Shared engineering memory</h2>
+            <p>The repository keeps the code, discussion, checks, and decisions in one place.</p>
+          </header>
+          <div class="memory-layout">
+            <div class="memory-history" aria-label="Repository history">
+              <article>
+                <i></i><span>Commit</span>
+                <strong>What changed</strong>
+                <p>Source and configuration describe the exact delta.</p>
+              </article>
+              <article>
+                <i></i><span>Review</span>
+                <strong>Why it changed</strong>
+                <p>Comments and approvals preserve the reasoning.</p>
+              </article>
+              <article>
+                <i></i><span>Release</span>
+                <strong>Where it went</strong>
+                <p>Checks and release evidence connect intent to production.</p>
+              </article>
+            </div>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a></p>
+        </section>
+
+        <!-- 9 - Open source / innersource -->
+        <section class="slide-why-content slide-innersource">
+          <div class="innersource-heading">
+            <p class="eyebrow">Reason 03</p>
+            <h2>Open source / Innersource</h2>
+            <p class="innersource-lead"><strong>Many ABAP developers are publishing in the open.</strong> But abapGit can stay entirely internal. No GitHub account required.</p>
+          </div>
+
+          <div class="about-metrics" aria-label="ABAP open source at a glance">
+            <article class="about-metric metric-orange">
+              <strong>6k+</strong>
+              <span>ABAP developers on GitHub</span>
+            </article>
+            <article class="about-metric metric-blend">
+              <strong>12k+</strong>
+              <span>public ABAP repos</span>
+            </article>
+            <article class="about-metric metric-blue">
+              <strong>1,930</strong>
+              <span>stars on abapGit</span>
+            </article>
+          </div>
+
+          <div class="innersource-split">
+            <div class="innersource-projects">
+              <p>Popular public projects</p>
+              <ul>
+                <li><a href="https://github.com/abap2xlsx/abap2xlsx"><strong>abap2xlsx</strong></a><span>Excel from ABAP</span><em>872</em></li>
+                <li><a href="https://github.com/ABAP-Logger/ABAP-Logger"><strong>ABAP-Logger</strong></a><span>Application logging</span><em>397</em></li>
+                <li><a href="https://github.com/abap2ui5/abap2ui5"><strong>abap2ui5</strong></a><span>UI5 apps purely in ABAP</span><em>381</em></li>
+              </ul>
+            </div>
+            <div class="innersource-private">
+              <p>Internal-only works too</p>
+              <p class="innersource-point"><strong>Private Git plus abapGit is the same workflow,</strong> inside the firewall. Nothing has to leave the company.</p>
+              <div class="innersource-benefits">
+                <article><strong>Reuse</strong><p>Teams share packages instead of copying.</p></article>
+                <article><strong>Review</strong><p>Pull requests and CI apply to internal code.</p></article>
+                <article><strong>Discover</strong><p>Ownership and APIs stay searchable.</p></article>
+                <article><strong>Onboard</strong><p>New developers learn from real repositories.</p></article>
+              </div>
+            </div>
+          </div>
+
+          <p class="about-source"><a href="https://stardev.io/languages/abap">stardev.io/languages/abap</a> &middot; checked September 2026</p>
+        </section>
+
+        <!-- 10 - Security -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 04</p>
+            <h2>Familiar security model</h2>
+            <p>The developer initiates the exchange. SAP calls out over HTTPS using existing access and authorizations.</p>
+          </header>
+          <div class="security-path" aria-label="Outbound connection from SAP to Git">
+            <div class="security-endpoint"><span>SAP</span><strong>User acts</strong></div>
+            <div class="security-connection"><span>Outbound HTTPS</span><i></i></div>
+            <div class="security-endpoint git-endpoint"><span>Git</span><strong>Platform checks</strong></div>
+          </div>
+          <div class="security-facts">
+            <article><strong>No inbound connection</strong><p>No open ports or standing agents inside the SAP landscape.</p></article>
+            <article><strong>Existing controls apply</strong><p>SAP access, authorizations, TLS, and the outbound network path remain in charge.</p></article>
+            <article><strong>Typically no new infrastructure</strong><p>No additional SAP Basis setup, servers, or middleware to operate.</p></article>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Security</p>
+        </section>
+
+        <!-- 11 - Clean core -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 05</p>
+            <h2>Visible clean core decisions</h2>
+            <p>A pull request records the intent before an implementation choice becomes hard to reverse.</p>
+          </header>
+          <div class="core-decision" aria-label="Clean core decision paths">
+            <div class="core-center">
+              <span>Pull request</span>
+              <strong>Where should this change live?</strong>
+              <p>Reviewers see the code, context, owner, and checks together.</p>
+            </div>
+            <div class="core-options">
+              <article><span>01</span><strong>Standard configuration</strong></article>
+              <article><span>02</span><strong>ABAP extension</strong></article>
+              <article><span>03</span><strong>Side-by-side</strong></article>
+              <article><span>04</span><strong>Owned exception</strong></article>
+            </div>
+          </div>
+          <div class="core-result"><strong>Visible rationale lowers future upgrade risk.</strong><span>Rules and exceptions stay reviewable instead of disappearing into project documents.</span></div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Clean Core and Extension Governance</p>
+        </section>
+
+        <!-- 12 - Release visibility -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Reason 06</p>
+            <h2>Release state you can see</h2>
+            <p>Git turns a hidden transport queue into an observable change and release history.</p>
+          </header>
+          <div class="release-track" aria-label="Visible release flow">
+            <article><i></i><span>Change</span><strong>Captured</strong><p>Source, docs, and tests</p></article>
+            <article><i></i><span>Evidence</span><strong>Collected</strong><p>Checks and approvals</p></article>
+            <article><i></i><span>Sequence</span><strong>Compared</strong><p>Dependencies and order</p></article>
+            <article><i></i><span>Release</span><strong>Decided</strong><p>Known scope and risk</p></article>
+          </div>
+          <div class="release-outcomes">
+            <article><strong>Progress comes from engineering activity</strong><p>Teams see blocked reviews, failing checks, ownership gaps, and risky changes without maintaining another status deck.</p></article>
+            <article><strong>Recovery becomes deliberate</strong><p>Production state can be compared with reviewed source before proposing a controlled revert.</p></article>
+          </div>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
+        </section>
+
+        <!-- 13 - Git and the agents (chapter) -->
+        <section data-state="why" class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">What about AI?</p>
+            <h2>Git and<br /><span>the agents</span></h2>
+            <p>An agent can only change what it can read, diff and revert.</p>
+          </div>
+        </section>
+
+        <!-- 14 - Where this comes from -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents</p>
+            <h2>Where this comes from</h2>
+            <p>Two groups have looked at what actually makes AI pay off on a codebase. Neither of them is talking about ABAP &mdash; and both land on the repository.</p>
+          </header>
+          <div class="source-cards">
+            <a class="source-card" href="https://dora.dev/ai/">
+              <p class="source-name">DORA</p>
+              <p class="source-url">dora.dev/ai</p>
+              <p class="source-what">Google&rsquo;s research programme on software delivery. The 2025 report on AI-assisted development, and the capability guides behind it &mdash; including the one on version control.</p>
+            </a>
+            <a class="source-card" href="https://factory.com/agent-readiness">
+              <p class="source-name">Factory</p>
+              <p class="source-url">factory.com/agent-readiness</p>
+              <p class="source-what">An evaluation framework that scores a repository on how ready it is for autonomous agents &mdash; documentation, tests, CI, modularity &mdash; and publishes the results for open-source projects.</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- 15 - Agents need files -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 01</p>
+            <h2>Agents need files</h2>
+            <p>A coding agent reads, diffs and patches files. ABAP objects live in the database, where it can do none of that.</p>
+          </header>
+          <div class="agents-path" aria-label="From database objects to files in a repository">
+            <div class="agents-stage"><span>SAP</span><strong>Objects in the database</strong></div>
+            <div class="agents-arrow"><span>abapGit</span><i></i></div>
+            <div class="agents-stage stage-repo"><span>Git</span><strong>Files in a repository</strong></div>
+          </div>
+        </section>
+
+        <!-- 16 - The safety net -->
+        <section class="slide-why-content slide-sparse">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 02</p>
+            <h2>The safety net</h2>
+            <p>Generated code is only safe to try when it is trivial to inspect and to undo.</p>
+          </header>
+          <blockquote class="agents-quote">Strong version control practices are the essential safety net that allows teams to experiment with AI-generated code confidently.<cite>DORA &middot; Version control</cite></blockquote>
+          <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
+        </section>
+
+        <!-- 17 - Tests and a build -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 03</p>
+            <h2>Something has to check</h2>
+            <p>An agent writes code far faster than a person can read it. Continuous integration is what keeps up.</p>
+          </header>
+          <div class="why-flow flow-three" aria-label="What CI does with a generated change">
+            <article class="why-step"><span>01</span><h3>It builds</h3><p>Syntax and project rules checked on every push. abaplint does this without an SAP system.</p></article>
+            <article class="why-step"><span>02</span><h3>It is tested</h3><p>ABAP Unit says whether the behaviour still holds, not only whether it compiles.</p></article>
+            <article class="why-step"><span>03</span><h3>You hear back</h3><p>The verdict lands on the pull request in minutes.</p></article>
+          </div>
+          <div class="why-takeaway">
+            <strong>More change needs more checking</strong>
+            <p>DORA found the same: without automated testing, mature version control and fast feedback, more change means more instability.</p>
+          </div>
+          <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
+        </section>
+
+        <!-- 18 - Iterate off stack -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 04</p>
+            <h2>Iterate off stack</h2>
+            <p>An agent&rsquo;s first ten attempts should not land anywhere near a real system.</p>
+          </header>
+          <div class="agents-facts">
+            <article><strong>No system in the loop</strong><p>abaplint parses and checks a plain checkout &mdash; no SAP instance, no logon.</p></article>
+            <article><strong>Code that runs</strong><p>open-abap executes ABAP and its unit tests on Node, so an agent can try what it just wrote.</p></article>
+            <article><strong>Nothing to damage</strong><p>Seconds per attempt, against a checkout rather than your development system.</p></article>
+          </div>
+        </section>
+
+        <!-- 19 - The repository is the context -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 05</p>
+            <h2>The repository is the context</h2>
+            <p>Everything an agent needs to make a change sits in one checkout, versioned together.</p>
+          </header>
+          <div class="agents-context">
+            <span>ABAP source</span>
+            <span>Unit tests</span>
+            <span>Documentation</span>
+            <span>CI configuration</span>
+            <span>Prompts</span>
+            <span>Agent instructions</span>
+          </div>
+          <div class="why-takeaway">
+            <strong>Better codebases, better outcomes</strong>
+            <p>Factory scores repositories on documentation, tests, CI and modularity. The same things that already made a codebase good to work in.</p>
+          </div>
+          <p class="flow-reference"><a href="https://factory.com/agent-readiness">factory.com/agent-readiness</a></p>
+        </section>
+
+        <!-- 20 - A person still decides -->
+        <section class="slide-why-content slide-sparse">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 06</p>
+            <h2>A person still decides</h2>
+            <p>Everything so far makes a change cheap to produce and cheap to check. None of it decides whether to keep it.</p>
+          </header>
+          <div class="why-takeaway">
+            <strong>The pull request is still the gate</strong>
+            <p>A change waits there until somebody merges it. Agents change how fast the queue fills up. They do not change who signs off on it.</p>
+          </div>
+        </section>
+
+        <!-- 21 - Sun -->
+        <section data-state="why" class="slide-sun">
+          <div class="ambient ambient-glow" aria-hidden="true"></div>
+          <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sun">
+            <circle class="sun-disc" cx="50" cy="50" r="18" />
+            <g class="sun-rays">
+              <line x1="50" y1="10" x2="50" y2="24" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(30 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(60 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(90 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(120 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(150 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(180 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(210 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(240 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(270 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(300 50 50)" />
+              <line x1="50" y1="10" x2="50" y2="24" transform="rotate(330 50 50)" />
+            </g>
+          </svg>
+        </section>
+
+        <!-- 22 - Demo -->
+        <section data-state="why" class="slide-demo">
+          <div class="ambient ambient-glow" aria-hidden="true"></div>
+          <h2 class="demo-word">Demo<span>?</span></h2>
+        </section>
+
+        <!-- 23 - Public GitHub sponsors -->
         <section class="slide-sponsors">
           <div class="sponsor-heading">
             <p class="eyebrow">GitHub Sponsors</p>
@@ -120,316 +546,14 @@
           <p class="sponsor-source">Public sponsors on GitHub &middot; checked 8 September 2026</p>
         </section>
 
-        <!-- 4 - abapGit contributors -->
-        <section class="slide-contributors">
-          <header class="contributors-heading">
-            <div>
-              <p class="eyebrow">Open source, built together</p>
-              <h2>Thanks to every contributor</h2>
-            </div>
-            <p class="contributors-count"><strong>191</strong><span>GitHub accounts</span></p>
-          </header>
-          <div class="contributor-wall" data-contributor-wall aria-label="GitHub contributors to abapGit"></div>
-          <footer class="contributors-footer">
-            <span>Select an avatar to open its GitHub profile.</span>
-            <a href="https://github.com/abapGit/abapGit/graphs/contributors">abapGit/abapGit contributors</a>
-            <span>Checked 10 September 2026</span>
-          </footer>
-        </section>
-
-        <!-- 5 - What is abapGit? -->
-        <section class="slide-about-abapgit">
-          <div class="about-heading">
-            <p class="eyebrow">Git for ABAP</p>
-            <h2>What is abapGit?</h2>
-            <p class="about-definition"><strong>An open-source Git client for ABAP.</strong> It turns SAP development objects into files you can branch, review, share, and automate.<span class="about-update"><span aria-hidden="true">↻</span> A developer can update it at any time.</span></p>
-          </div>
-
-          <div class="about-metrics" aria-label="abapGit at a glance">
-            <article class="about-metric metric-orange">
-              <strong>10+</strong>
-              <span>years of stability</span>
-            </article>
-            <article class="about-metric metric-blend">
-              <strong>7.02+</strong>
-              <span>SAP_BASIS support</span>
-            </article>
-            <article class="about-metric metric-blue">
-              <strong>167+</strong>
-              <span>object types</span>
-            </article>
-          </div>
-
-          <div class="about-lower">
-            <div class="about-capabilities">
-              <p>Beyond source code</p>
-              <div class="capability-tags">
-                <span>Table contents</span>
-                <span>Customizing</span>
-                <span>Offline support</span>
-                <span>Background mode</span>
-                <span>User exits</span>
-              </div>
-            </div>
-            <div class="about-contribute">
-              <p><strong>Get started</strong> by installing the <a href="https://docs.abapgit.org/user-guide/getting-started/installation.html">abapGit program</a>.</p>
-              <p><strong>Missing something?</strong> Open a PR and make it available to everyone.</p>
-            </div>
-          </div>
-
-          <p class="about-source"><a href="https://docs.abapgit.org/user-guide/reference/supported.html">abapGit supported object types</a> &middot; September 2026</p>
-        </section>
-
-        <!-- 6 - Who uses abapGit? -->
-        <section class="slide-adoption">
-          <div class="adoption-heading">
-            <p class="eyebrow">Adoption</p>
-            <h2>Who uses abapGit?</h2>
-            <p class="adoption-lead"><strong>49 organisations have put their name on the record</strong> &mdash; customers, SAP itself, and consulting partners, each added to the abapGit docs by pull request. <a href="https://dotabap.org">dotabap.org</a> counts the ABAP they publish openly.</p>
-          </div>
-
-          <div class="about-metrics" aria-label="abapGit adoption at a glance">
-            <article class="about-metric metric-orange">
-              <strong>2.4m</strong>
-              <span>lines of open-source ABAP</span>
-            </article>
-            <article class="about-metric metric-blend">
-              <strong>341</strong>
-              <span>projects indexed</span>
-            </article>
-            <article class="about-metric metric-blue">
-              <strong>49</strong>
-              <span>organisations named</span>
-            </article>
-          </div>
-
-          <div class="adoption-users">
-            <div class="adoption-group">
-              <p class="adoption-label">Customers &middot; 16</p>
-              <p class="adoption-names">Schwarz Group &middot; Hansgrohe &middot; Linde Engineering &middot; Endress+Hauser &middot; RheinEnergie &middot; bonprix &middot; Haufe Group &middot; GEZE &middot; City of Zurich</p>
-            </div>
-            <div class="adoption-group">
-              <p class="adoption-label">SAP &middot; 2</p>
-              <p class="adoption-names">SAP IBSO &middot; SAP Labs Czech Republic</p>
-            </div>
-            <div class="adoption-group">
-              <p class="adoption-label">Consulting &amp; partners &middot; 31</p>
-              <p class="adoption-names">abat &middot; adesso &middot; CQSE &middot; Hochfrequenz &middot; rku.it &middot; objective partner &middot; Microsoft Azure</p>
-            </div>
-          </div>
-
-          <p class="adoption-invisible"><strong>And the part nobody can count.</strong> The list is self-reported and internal repositories never appear anywhere &mdash; every number here is a floor.</p>
-
-          <p class="about-source"><a href="https://docs.abapgit.org/user-guide/other/where-used.html">Who Uses abapGit?</a> &middot; <a href="https://dotabap.org">dotabap.org</a> &middot; checked September 2026</p>
-        </section>
-
-        <!-- 7 - Open source / innersource -->
-        <section class="slide-innersource">
-          <div class="innersource-heading">
-            <p class="eyebrow">Same client, two audiences</p>
-            <h2>Open source / Innersource</h2>
-            <p class="innersource-lead"><strong>Many ABAP developers are publishing in the open.</strong>. But abapGit can stay entirely internal. No GitHub account required.</p>
-          </div>
-
-          <div class="about-metrics" aria-label="ABAP open source at a glance">
-            <article class="about-metric metric-orange">
-              <strong>6k+</strong>
-              <span>ABAP developers on GitHub</span>
-            </article>
-            <article class="about-metric metric-blend">
-              <strong>12k+</strong>
-              <span>public ABAP repos</span>
-            </article>
-            <article class="about-metric metric-blue">
-              <strong>1,930</strong>
-              <span>stars on abapGit</span>
-            </article>
-          </div>
-
-          <div class="innersource-split">
-            <div class="innersource-projects">
-              <p>Popular public projects</p>
-              <ul>
-                <li><a href="https://github.com/abapGit/abapGit"><strong>abapGit</strong></a><span>Git client</span><em>1,930</em></li>
-                <li><a href="https://github.com/abap2xlsx/abap2xlsx"><strong>abap2xlsx</strong></a><span>Excel from ABAP</span><em>872</em></li>
-                <li><a href="https://github.com/ABAP-Logger/ABAP-Logger"><strong>ABAP-Logger</strong></a><span>Application logging</span><em>397</em></li>
-                <li><a href="https://github.com/abap2ui5/abap2ui5"><strong>abap2ui5</strong></a><span>UI5 apps purely in ABAP</span><em>381</em></li>
-              </ul>
-            </div>
-            <div class="innersource-private">
-              <p>Exclusive innersource works too</p>
-              <p class="innersource-point"><strong>Private Git plus abapGit is the same workflow,</strong> inside the firewall. Nothing has to leave the company.</p>
-              <div class="innersource-benefits">
-                <article><strong>Reuse</strong><p>Teams share packages instead of copying.</p></article>
-                <article><strong>Review</strong><p>Pull requests and CI apply to internal code.</p></article>
-                <article><strong>Discover</strong><p>Ownership and APIs stay searchable.</p></article>
-                <article><strong>Onboard</strong><p>New developers learn from real repositories.</p></article>
-              </div>
-            </div>
-          </div>
-
-          <p class="about-source"><a href="https://stardev.io/languages/abap">stardev.io/languages/abap</a> &middot; checked September 2026</p>
-        </section>
-
-        <!-- 8 - Why? Oh why? section -->
-        <section data-state="why" class="slide-why-section">
-          <div class="why-section-copy">
-            <p class="eyebrow">Why Git in ABAP?</p>
-            <h2>Why?<br /><span>Oh why?</span></h2>
-            <p>Code is only one part of a safe change.</p>
-          </div>
-          <ol class="why-section-index">
-            <li><span>01</span>Quality built in</li>
-            <li><span>02</span>Shared engineering memory</li>
-            <li><span>03</span>Familiar security model</li>
-            <li><span>04</span>Visible clean core decisions</li>
-            <li><span>05</span>Release state you can see</li>
-          </ol>
-          <p class="why-section-source">Inspired by <a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Heliconia Labs Flow One-Pagers</a></p>
-        </section>
-
-        <!-- 9 - Quality built in -->
-        <section class="slide-why-content slide-quality">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 01</p>
-            <h2>Quality built in</h2>
-            <p>Every proposed change runs the same checks before review, transport, or production.</p>
-          </header>
-          <div class="why-flow" aria-label="Quality flow">
-            <article class="why-step">
-              <span>01</span>
-              <h3>Developer pushes</h3>
-              <p>ABAP source, configuration, documentation, and tests land together.</p>
-            </article>
-            <article class="why-step">
-              <span>02</span>
-              <h3>CI checks</h3>
-              <p>Static analysis, tests, security rules, and project policy run automatically.</p>
-            </article>
-            <article class="why-step">
-              <span>03</span>
-              <h3>Evidence returns</h3>
-              <p>Findings appear in the pull request while the change is still fresh.</p>
-            </article>
-            <article class="why-step">
-              <span>04</span>
-              <h3>Human approves</h3>
-              <p>Reviewers spend their time on architecture, business risk, and judgment.</p>
-            </article>
-          </div>
-          <div class="why-takeaway">
-            <strong>Earlier feedback</strong>
-            <p>Problems surface at commit and pull request time, not at the end of the transport path.</p>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Quality Built In</p>
-        </section>
-
-        <!-- 10 - Shared engineering memory -->
-        <section class="slide-why-content slide-memory">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 02</p>
-            <h2>Shared engineering memory</h2>
-            <p>The repository keeps the code, discussion, checks, and decisions in one place.</p>
-          </header>
-          <div class="memory-layout">
-            <div class="memory-history" aria-label="Repository history">
-              <article>
-                <i></i><span>Commit</span>
-                <strong>What changed</strong>
-                <p>Source and configuration describe the exact delta.</p>
-              </article>
-              <article>
-                <i></i><span>Review</span>
-                <strong>Why it changed</strong>
-                <p>Comments and approvals preserve the reasoning.</p>
-              </article>
-              <article>
-                <i></i><span>Release</span>
-                <strong>Where it went</strong>
-                <p>Checks and release evidence connect intent to production.</p>
-              </article>
-            </div>
-            <div class="memory-benefits">
-              <article><strong>Discover</strong><p>Teams find existing packages, APIs, patterns, and owners.</p></article>
-              <article><strong>Learn</strong><p>New developers learn from real changes instead of tribal knowledge.</p></article>
-              <article><strong>Reuse</strong><p>Visible ownership and quality signals make shared components easier to trust.</p></article>
-              <blockquote>Rollback begins with knowing what changed and why.</blockquote>
-            </div>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
-        </section>
-
-        <!-- 11 - Security -->
-        <section class="slide-why-content slide-security">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 03</p>
-            <h2>Familiar security model</h2>
-            <p>The developer initiates the exchange. SAP calls out over HTTPS using existing access and authorizations.</p>
-          </header>
-          <div class="security-path" aria-label="Outbound connection from SAP to Git">
-            <div class="security-endpoint sap-endpoint"><span>SAP</span><strong>User acts</strong></div>
-            <div class="security-connection"><span>Outbound HTTPS</span><i></i></div>
-            <div class="security-endpoint git-endpoint"><span>Git</span><strong>Platform checks</strong></div>
-          </div>
-          <div class="security-facts">
-            <article><strong>No inbound connection</strong><p>No open ports or standing agents inside the SAP landscape.</p></article>
-            <article><strong>Existing controls apply</strong><p>SAP access, authorizations, TLS, and the outbound network path remain in charge.</p></article>
-            <article><strong>Typically no new infrastructure</strong><p>No additional SAP Basis setup, servers, or middleware to operate.</p></article>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Security</p>
-        </section>
-
-        <!-- 12 - Clean core -->
-        <section class="slide-why-content slide-clean-core">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 04</p>
-            <h2>Visible clean core decisions</h2>
-            <p>A pull request records the intent before an implementation choice becomes hard to reverse.</p>
-          </header>
-          <div class="core-decision" aria-label="Clean core decision paths">
-            <div class="core-center">
-              <span>Pull request</span>
-              <strong>Where should this change live?</strong>
-              <p>Reviewers see the code, context, owner, and checks together.</p>
-            </div>
-            <div class="core-options">
-              <article><span>01</span><strong>Standard configuration</strong></article>
-              <article><span>02</span><strong>ABAP extension</strong></article>
-              <article><span>03</span><strong>Side-by-side</strong></article>
-              <article><span>04</span><strong>Owned exception</strong></article>
-            </div>
-          </div>
-          <div class="core-result"><strong>Visible rationale lowers future upgrade risk.</strong><span>Rules and exceptions stay reviewable instead of disappearing into project documents.</span></div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Clean Core and Extension Governance</p>
-        </section>
-
-        <!-- 13 - Release visibility -->
-        <section class="slide-why-content slide-release">
-          <header class="why-heading">
-            <p class="eyebrow">Reason 05</p>
-            <h2>Release state you can see</h2>
-            <p>Git turns a hidden transport queue into an observable change and release history.</p>
-          </header>
-          <div class="release-track" aria-label="Visible release flow">
-            <article><i></i><span>Change</span><strong>Captured</strong><p>Source, docs, and tests</p></article>
-            <article><i></i><span>Evidence</span><strong>Collected</strong><p>Checks and approvals</p></article>
-            <article><i></i><span>Sequence</span><strong>Compared</strong><p>Dependencies and order</p></article>
-            <article><i></i><span>Release</span><strong>Decided</strong><p>Known scope and risk</p></article>
-          </div>
-          <div class="release-outcomes">
-            <article><strong>Progress comes from engineering activity</strong><p>Teams see blocked reviews, failing checks, ownership gaps, and risky changes without maintaining another status deck.</p></article>
-            <article><strong>Recovery becomes deliberate</strong><p>Production state can be compared with reviewed source before proposing a controlled revert.</p></article>
-          </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
-        </section>
-
-        <!-- 14 - Q&A / links -->
+        <!-- 24 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>
             <h2>Questions?</h2>
             <ul class="links">
               <li><a href="https://abapgit.org">abapgit.org</a></li>
+              <li><a href="https://abappm.com/">abappm.com</a></li>
               <li><a href="https://abaplint.app">abaplint.app</a></li>
             </ul>
             <p class="closing-note">abapGit at DSAG 2018: <a href="https://larshp.github.io/Presentations/dsag2018/">larshp.github.io/Presentations/dsag2018</a></p>
