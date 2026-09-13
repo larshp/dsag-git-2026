@@ -21,6 +21,13 @@ body.deck-page {
   overflow: hidden;
   background: var(--stage-bg);
   -webkit-font-smoothing: antialiased;
+  /*
+    The slides are a 1280px-wide block inside a much narrower phone viewport,
+    which is exactly what makes iOS Safari inflate text on its own. That would
+    reflow a layout whose whole point is that it does not reflow.
+  */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .deck {
@@ -282,13 +289,14 @@ body.deck-page {
 /*
   A 16:9 stage in a phone's portrait viewport scales to about 0.3 — a band a
   third of the screen tall with 5px body text. Ask for landscape instead, but
-  let a tap through for anyone who wants to look regardless.
+  let a tap through for anyone who wants to look regardless. Touch pointers
+  only: a narrow desktop window is not something you rotate.
 */
 .deck-rotate {
   display: none;
 }
 
-@media (orientation: portrait) and (max-width: 700px) {
+@media (orientation: portrait) and (max-width: 700px) and (pointer: coarse) {
   .deck-rotate {
     position: absolute;
     inset: 0;
