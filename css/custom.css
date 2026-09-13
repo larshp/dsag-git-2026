@@ -9,10 +9,8 @@
   --dsag: #173f57;
   --dsag-light: #5f8ca4;
   --blend: #a34865;
-  --deep: #071721;
   --ink: #112b3b;
   --muted: #5b7080;
-  --paper: #fff;
   --white: #fff;
   --rule: rgba(23, 63, 87, 0.16);
   --mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
@@ -685,8 +683,6 @@
 }
 
 .about-metric strong,
-.about-metric span { display: block; }
-
 .about-metric strong {
   color: currentColor;
   font-size: 1.16em;
@@ -695,6 +691,7 @@
 }
 
 .about-metric span {
+  display: block;
   margin-top: 14px;
   color: var(--ink);
   font: 640 .33em/1.2 var(--mono);
@@ -945,9 +942,6 @@
   line-height: 1.2;
 }
 
-/* Right-align the counts: the shared column is as wide as "1,930". */
-.innersource-projects em { justify-self: end; }
-
 .innersource-projects li:first-child {
   border-top: 0;
   padding-top: 4px;
@@ -962,7 +956,9 @@
 
 .innersource-projects span { color: var(--muted); }
 
+/* Right-align the counts: the shared column is as wide as "1,930". */
 .innersource-projects em {
+  justify-self: end;
   color: var(--git);
   font: 680 1em/1 var(--mono);
   font-style: normal;
@@ -1065,10 +1061,8 @@
   box-shadow: 0 14px 30px rgba(23,63,87,.08);
 }
 
-.agents-stage span,
-.agents-stage strong { display: block; }
-
 .agents-stage span {
+  display: block;
   color: var(--git);
   font: 780 .31em/1 var(--mono);
   text-transform: uppercase;
@@ -1077,6 +1071,7 @@
 .agents-stage.stage-repo span { color: var(--dsag); }
 
 .agents-stage strong {
+  display: block;
   margin-top: 16px;
   color: var(--ink);
   font-size: .42em;
@@ -1559,10 +1554,8 @@
   box-shadow: 0 14px 30px rgba(23,63,87,.08);
 }
 
-.security-endpoint span,
-.security-endpoint strong { display: block; }
-
 .security-endpoint span {
+  display: block;
   color: var(--git);
   font: 780 .31em/1 var(--mono);
   text-transform: uppercase;
@@ -1571,6 +1564,7 @@
 .git-endpoint span { color: var(--dsag); }
 
 .security-endpoint strong {
+  display: block;
   margin-top: 16px;
   color: var(--ink);
   font-size: .42em;
