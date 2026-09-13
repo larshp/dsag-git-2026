@@ -371,7 +371,153 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
         </section>
 
-        <!-- 13 - Sun -->
+        <!-- 13 - Git and the agents (chapter) -->
+        <section data-state="why" class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">What about AI?</p>
+            <h2>Git and<br /><span>the agents</span></h2>
+            <p>An agent can only change what it can read, diff and revert.</p>
+          </div>
+          <ol class="why-section-index">
+            <li><span>01</span>Agents need files, not a database</li>
+            <li><span>02</span>Version control is the safety net</li>
+            <li><span>03</span>Continuous integration checks the work</li>
+            <li><span>04</span>Iterating off stack keeps it cheap</li>
+            <li><span>05</span>The repository carries the context</li>
+            <li><span>06</span>A person still decides</li>
+          </ol>
+        </section>
+
+        <!-- 14 - Where this comes from -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents</p>
+            <h2>Where this comes from</h2>
+            <p>Two groups have looked at what actually makes AI pay off on a codebase. Neither of them is talking about ABAP &mdash; and both land on the repository.</p>
+          </header>
+          <div class="source-cards">
+            <a class="source-card" href="https://dora.dev/ai/">
+              <p class="source-name">DORA</p>
+              <p class="source-url">dora.dev/ai</p>
+              <p class="source-what">Google&rsquo;s research programme on software delivery. The 2025 report on AI-assisted development, and the capability guides behind it &mdash; including the one on version control.</p>
+            </a>
+            <a class="source-card" href="https://factory.com/agent-readiness">
+              <p class="source-name">Factory</p>
+              <p class="source-url">factory.com/agent-readiness</p>
+              <p class="source-what">An evaluation framework that scores a repository on how ready it is for autonomous agents &mdash; documentation, tests, CI, modularity &mdash; and publishes the results for open-source projects.</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- 15 - Agents need files -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 01</p>
+            <h2>Agents need files</h2>
+            <p>A coding agent reads, diffs and patches files. ABAP objects live in the database, where it can do none of that.</p>
+          </header>
+          <div class="agents-path" aria-label="From database objects to files in a repository">
+            <div class="agents-stage"><span>SAP</span><strong>Objects in the database</strong></div>
+            <div class="agents-arrow"><span>abapGit</span><i></i></div>
+            <div class="agents-stage stage-repo"><span>Git</span><strong>Files in a repository</strong></div>
+          </div>
+          <div class="why-takeaway">
+            <strong>Nothing new to build</strong>
+            <p>The serialisation that makes ABAP reviewable by a person is the same one that makes it readable by a machine.</p>
+          </div>
+        </section>
+
+        <!-- 16 - The safety net -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 02</p>
+            <h2>The safety net</h2>
+            <p>Generated code is only safe to try when it is trivial to inspect and to undo.</p>
+          </header>
+          <blockquote class="agents-quote">Strong version control practices are the essential safety net that allows teams to experiment with AI-generated code confidently.<cite>DORA &middot; Version control</cite></blockquote>
+          <div class="agents-facts">
+            <article><strong>Revert</strong><p>A bad suggestion is one command away from gone.</p></article>
+            <article><strong>Audit</strong><p>The history says what changed, when, and on whose account.</p></article>
+            <article><strong>Review</strong><p>A pull request puts a person in front of the change before it lands.</p></article>
+          </div>
+          <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
+        </section>
+
+        <!-- 17 - Tests and a build -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 03</p>
+            <h2>Something has to check</h2>
+            <p>An agent writes code far faster than a person can read it. Continuous integration is what keeps up.</p>
+          </header>
+          <div class="agents-facts">
+            <article><strong>It builds</strong><p>Syntax and activation checked on every push &mdash; abaplint does it without an SAP system.</p></article>
+            <article><strong>It is tested</strong><p>ABAP Unit says whether the behaviour still holds, not just whether it compiles.</p></article>
+            <article><strong>You hear back</strong><p>The verdict lands on the pull request in minutes, before anyone reads a line.</p></article>
+          </div>
+          <div class="why-takeaway">
+            <strong>More change needs more checking</strong>
+            <p>DORA is blunt about it: without automated testing, mature version control and fast feedback, more change just means more instability.</p>
+          </div>
+          <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
+        </section>
+
+        <!-- 18 - Iterate off stack -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 04</p>
+            <h2>Iterate off stack</h2>
+            <p>An agent&rsquo;s first ten attempts should not land anywhere near a real system.</p>
+          </header>
+          <div class="agents-facts">
+            <article><strong>No system in the loop</strong><p>abaplint parses and checks a plain checkout &mdash; no SAP instance, no logon.</p></article>
+            <article><strong>Code that runs</strong><p>open-abap executes ABAP and its unit tests on Node, so an agent can try what it just wrote.</p></article>
+            <article><strong>Nothing to damage</strong><p>Seconds per attempt, against a checkout rather than your development system.</p></article>
+          </div>
+          <div class="why-takeaway">
+            <strong>Cheap attempts, safe attempts</strong>
+            <p>The loop an agent needs &mdash; write, run, read the error, try again &mdash; is one you would never want it running inside a live stack.</p>
+          </div>
+        </section>
+
+        <!-- 19 - The repository is the context -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 05</p>
+            <h2>The repository is the context</h2>
+            <p>An agent is only as good as what it can see. In a repository everything it needs sits in one place.</p>
+          </header>
+          <div class="agents-facts">
+            <article><strong>The code</strong><p>Source, and the tests that say what it is supposed to do.</p></article>
+            <article><strong>The docs</strong><p>Written beside the code instead of in a separate system.</p></article>
+            <article><strong>The instructions</strong><p>Prompts and agent configuration, versioned like everything else.</p></article>
+          </div>
+          <div class="why-takeaway">
+            <strong>Better codebases, better outcomes</strong>
+            <p>Factory scores repositories on documentation, tests, CI and modularity &mdash; the same things that already made a codebase good for people.</p>
+          </div>
+          <p class="flow-reference"><a href="https://factory.com/agent-readiness">factory.com/agent-readiness</a></p>
+        </section>
+
+        <!-- 20 - A person still decides -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">Git and the agents &middot; 06</p>
+            <h2>A person still decides</h2>
+            <p>Everything so far makes a change cheap to produce and cheap to check. None of it makes the call.</p>
+          </header>
+          <div class="agents-facts">
+            <article><strong>A proposal, not a fact</strong><p>The change arrives as a pull request and sits there until someone acts on it.</p></article>
+            <article><strong>A diff you already read</strong><p>Reviewers see exactly what moved, in the form they look at every day.</p></article>
+            <article><strong>An explicit merge</strong><p>Nothing reaches the system because a model was confident about it.</p></article>
+          </div>
+          <div class="why-takeaway">
+            <strong>The agent proposes</strong>
+            <p>Git already had the gate. Agents change how fast the queue fills up, not who is accountable for what goes through it.</p>
+          </div>
+        </section>
+
+        <!-- 21 - Sun -->
         <section data-state="why" class="slide-sun">
           <div class="ambient ambient-sun" aria-hidden="true"></div>
           <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sun">
@@ -393,7 +539,7 @@
           </svg>
         </section>
 
-        <!-- 14 - Public GitHub sponsors -->
+        <!-- 22 - Public GitHub sponsors -->
         <section class="slide-sponsors">
           <div class="sponsor-heading">
             <p class="eyebrow">GitHub Sponsors</p>
@@ -444,7 +590,7 @@
           <p class="sponsor-source">Public sponsors on GitHub &middot; checked 8 September 2026</p>
         </section>
 
-        <!-- 15 - Q&A / links -->
+        <!-- 23 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>

@@ -1057,6 +1057,134 @@
   line-height: 1.32;
 }
 
+/* Git and the agents - sparse chapter slides, one point each. */
+
+.source-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  margin-top: 52px;
+}
+
+.source-card {
+  display: block;
+  padding: 26px 30px 28px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 14px 30px rgba(23,63,87,.08);
+  text-decoration: none;
+}
+
+.source-name {
+  margin: 0;
+  color: var(--git);
+  font: 780 .31em/1 var(--mono);
+  text-transform: uppercase;
+}
+
+.source-card + .source-card .source-name { color: var(--dsag); }
+
+.source-url {
+  margin: 14px 0 0;
+  color: var(--ink);
+  font: 720 .36em/1.2 var(--mono);
+}
+
+.source-what {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: .28em;
+  line-height: 1.42;
+}
+
+.agents-path {
+  display: grid;
+  grid-template-columns: 1fr 210px 1fr;
+  align-items: center;
+  gap: 26px;
+  margin: 52px 40px 0;
+}
+
+.agents-stage {
+  min-height: 116px;
+  padding: 23px 28px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 14px 30px rgba(23,63,87,.08);
+}
+
+.agents-stage span,
+.agents-stage strong { display: block; }
+
+.agents-stage span {
+  color: var(--git);
+  font: 780 .31em/1 var(--mono);
+  text-transform: uppercase;
+}
+
+.agents-stage.stage-repo span { color: var(--dsag); }
+
+.agents-stage strong {
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: .42em;
+}
+
+.agents-arrow {
+  position: relative;
+  height: 70px;
+  text-align: center;
+}
+
+.agents-arrow span {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--dsag);
+  background: var(--white);
+  font: 720 .26em/1 var(--mono);
+}
+
+.agents-arrow i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 39px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--git), var(--blend), var(--dsag));
+}
+
+.agents-arrow i::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  border-width: 7px 0 7px 11px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--dsag);
+}
+
+.agents-quote {
+  max-width: 900px;
+  margin: 52px 0 0;
+  color: var(--ink);
+  font-size: .54em;
+  line-height: 1.34;
+  letter-spacing: -.015em;
+}
+
+.agents-quote cite {
+  display: block;
+  margin-top: 16px;
+  color: var(--muted);
+  font: 650 .42em/1 var(--mono);
+  font-style: normal;
+}
+
 /* Why? Oh why? */
 
 .deck-slide.slide-why-section {
@@ -1462,27 +1590,33 @@
   border-color: transparent transparent transparent var(--dsag);
 }
 
-.security-facts {
+.security-facts,
+.agents-facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 38px;
   margin-top: 40px;
 }
 
-.security-facts article {
+.security-facts article,
+.agents-facts article {
   padding-top: 18px;
   border-top: 4px solid var(--git);
 }
 
-.security-facts article:nth-child(2) { border-color: var(--blend); }
-.security-facts article:nth-child(3) { border-color: var(--dsag); }
+.security-facts article:nth-child(2),
+.agents-facts article:nth-child(2) { border-color: var(--blend); }
+.security-facts article:nth-child(3),
+.agents-facts article:nth-child(3) { border-color: var(--dsag); }
 
-.security-facts strong {
+.security-facts strong,
+.agents-facts strong {
   color: var(--ink);
   font-size: .35em;
 }
 
-.security-facts p {
+.security-facts p,
+.agents-facts p {
   margin: 9px 0 0;
   color: var(--muted);
   font-size: .28em;
