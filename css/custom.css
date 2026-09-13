@@ -1631,6 +1631,8 @@
   background: var(--git);
 }
 .links li + li a::before { background: var(--dsag-light); }
+/* Three links read as the deck's git -> blend -> dsag progression. */
+.links li:nth-child(2) a::before { background: var(--blend); }
 .qr { justify-self: center; text-align: center; }
 .qr-frame {
   width: 246px;
