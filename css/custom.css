@@ -1187,11 +1187,12 @@
 
 /* Why? Oh why? */
 
+/* Chapter dividers carry only the copy now, so a single centred column rather
+   than the old two-column split with a contents list on the right. */
 .deck-slide.slide-why-section {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 74px 100px 104px;
   color: var(--white);
 }
@@ -1218,35 +1219,6 @@
   color: rgba(255,255,255,.72);
   font-size: .43em;
   line-height: 1.45;
-}
-
-.why-section-index {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: none;
-}
-
-.why-section-index li {
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  align-items: center;
-  gap: 19px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,.13);
-  color: rgba(255,255,255,.92);
-  font-size: .39em;
-  font-weight: 650;
-}
-
-.why-section-index li:first-child {
-  border-top: 1px solid rgba(255,255,255,.13);
-}
-
-.why-section-index li span {
-  color: var(--git-light);
-  font: 720 .76em/1 var(--mono);
-  letter-spacing: .08em;
 }
 
 /* Interlude: same dark treatment as the title and "Why? Oh why?" slides
