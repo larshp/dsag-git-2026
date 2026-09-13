@@ -119,6 +119,25 @@ body.deck-page {
 
 /* ---------- chrome ------------------------------------------------------ */
 
+/*
+  The chrome shares the stage box and its scale, so the progress bar keeps the
+  same relation to the slide's bottom padding at every aspect ratio. Anchored to
+  the viewport instead, it cut through slide content on anything but 16:9.
+*/
+.deck-chrome-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  margin-left: calc(var(--slide-w) / -2);
+  margin-top: calc(var(--slide-h) / -2);
+  transform-origin: 50% 50%;
+  transform: scale(var(--scale, 1));
+  pointer-events: none;
+}
+
 .deck-chrome {
   position: absolute;
   left: 0;
@@ -223,6 +242,7 @@ body.deck-page {
 .deck-help {
   position: absolute;
   inset: 0;
+  z-index: 5; /* above the chrome layer */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,6 +275,54 @@ body.deck-page {
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.08);
   font: 500 12px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+/* ---------- portrait phones --------------------------------------------- */
+
+/*
+  A 16:9 stage in a phone's portrait viewport scales to about 0.3 — a band a
+  third of the screen tall with 5px body text. Ask for landscape instead, but
+  let a tap through for anyone who wants to look regardless.
+*/
+.deck-rotate {
+  display: none;
+}
+
+@media (orientation: portrait) and (max-width: 700px) {
+  .deck-rotate {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 32px;
+    background: var(--stage-bg);
+    font: 17px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: #f7f8f9;
+    text-align: center;
+  }
+}
+
+.deck-rotate[hidden] {
+  display: none;
+}
+
+.deck-rotate svg {
+  color: var(--chrome-accent);
+}
+
+.deck-rotate p {
+  margin: 18px 0 8px;
+  font-weight: 600;
+}
+
+.deck-rotate small {
+  display: block;
+  max-width: 22em;
+  font-size: 14px;
+  color: var(--chrome-ink);
 }
 
 /* ---------- blanked screen ---------------------------------------------- */

@@ -7,7 +7,7 @@
   plain content.
 
   Handles: fit-to-viewport scaling, keyboard and touch navigation, #/h/v
-  routing, overview, blanking and fullscreen.
+  routing, overview, blanking, fullscreen and the portrait-phone hint.
 */
 (function () {
   "use strict";
@@ -111,9 +111,32 @@
       .join("") +
     "</tbody></table>";
 
-  deck.appendChild(chrome);
-  deck.appendChild(progress);
+  // The chrome rides in the stage's coordinate system — see deck.css — so both
+  // elements go into a layer that is scaled the same way the slides are.
+  var chromeLayer = document.createElement("div");
+  chromeLayer.className = "deck-chrome-layer";
+  chromeLayer.appendChild(chrome);
+  chromeLayer.appendChild(progress);
+
+  var rotate = document.createElement("div");
+  rotate.className = "deck-rotate";
+  rotate.innerHTML =
+    "<div>" +
+    '<svg viewBox="0 0 64 48" width="64" height="48" fill="none" stroke="currentColor" ' +
+    'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M10 24 A 22 22 0 0 1 54 24" />' +
+    '<polyline points="48 18 54 24 60 18" />' +
+    '<rect x="24" y="16" width="16" height="28" rx="3" />' +
+    '<path d="M29 40 h6" />' +
+    "</svg>" +
+    "<p>Rotate your phone</p>" +
+    "<small>The slides are 16:9 &mdash; portrait leaves them a third of the " +
+    "screen tall. Tap to look anyway.</small>" +
+    "</div>";
+
+  deck.appendChild(chromeLayer);
   deck.appendChild(help);
+  deck.appendChild(rotate);
 
   var counterEl = chrome.querySelector(".deck-counter");
   var progressEl = progress.querySelector(".deck-progress-fill");
@@ -217,8 +240,10 @@
 
   function layout() {
     var scale = Math.min(window.innerWidth / W, window.innerHeight / H);
-    stage.style.setProperty("--scale", scale);
-    stage.style.setProperty("--overview-scale", scale * OVERVIEW_ZOOM);
+    // On the deck, not the stage: the chrome layer is a sibling of the stage
+    // and needs to inherit the same scale.
+    deck.style.setProperty("--scale", scale);
+    deck.style.setProperty("--overview-scale", scale * OVERVIEW_ZOOM);
   }
 
   function setOverview(on) {
@@ -341,6 +366,10 @@
 
   help.addEventListener("click", function () {
     help.hidden = true;
+  });
+
+  rotate.addEventListener("click", function () {
+    rotate.hidden = true;
   });
 
   chrome.querySelector(".deck-help-btn").addEventListener("click", function () {
