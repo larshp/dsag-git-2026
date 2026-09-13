@@ -612,6 +612,33 @@
   font-weight: 720;
 }
 
+/* The one word the slide is arguing for. */
+.about-definition strong em {
+  color: var(--git);
+  font-style: normal;
+}
+
+/* Same shape as .about-update below, in the accent colour. */
+.about-scope {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 14px;
+  color: var(--git);
+  font: 680 .76em/1.2 var(--mono);
+}
+
+.about-scope > span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--git);
+  font: 700 11px/1 var(--mono);
+}
+
 .about-update {
   display: flex;
   align-items: center;
@@ -684,7 +711,9 @@
 
 .about-lower {
   display: grid;
-  grid-template-columns: .92fr 1.08fr;
+  /* Even split: the tag column needs the width to hold its rows at three and
+     two, and the contribute box reads fine at the narrower size. */
+  grid-template-columns: 1fr 1fr;
   gap: 22px;
   margin-top: 22px;
 }
@@ -696,6 +725,8 @@
 }
 
 .about-capabilities {
+  display: flex;
+  flex-direction: column;
   padding: 18px 24px;
   border: 1px solid rgba(240,60,46,.15);
   background: linear-gradient(105deg, rgba(240,60,46,.095), rgba(240,60,46,.025));
@@ -709,18 +740,25 @@
   text-transform: uppercase;
 }
 
+/* Five tags are wider than this column, so they wrap onto two rows rather than
+   being shrunk until the labels break mid-phrase. flex:1 + align-content let
+   those rows centre in the height the grid row forces on us. */
 .capability-tags {
   display: flex;
-  gap: 12px;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 10px;
 }
 
 .capability-tags span {
-  padding: 7px 13px;
+  padding: 8px 14px;
   border-radius: 999px;
   color: var(--ink);
   background: var(--white);
   box-shadow: 0 3px 10px rgba(23,63,87,.07);
   font: 650 .3em/1 var(--mono);
+  white-space: nowrap;
 }
 
 .about-contribute {
