@@ -915,11 +915,9 @@
   padding: 58px 92px 92px;
 }
 
-/* This slide also carries .slide-why-content, which is declared later and would
-   otherwise top-align it and leave a void under the panels. Its own centred
-   balance reads better, so win on specificity rather than reorder the file. */
+/* Keeps its own tighter bottom padding; centring now comes from
+   .slide-why-content, which this slide also carries. */
 .deck-slide.slide-why-content.slide-innersource {
-  justify-content: center;
   padding-bottom: 92px;
 }
 
@@ -1168,6 +1166,41 @@
   border-color: transparent transparent transparent var(--dsag);
 }
 
+/* Slides carrying a single statement rather than a row of items. Centring now
+   comes from .slide-why-content itself; this only sizes the quote up to fill
+   the frame it has to itself. */
+.slide-sparse .agents-quote {
+  margin-top: 44px;
+  font-size: .62em;
+}
+
+/* Three steps instead of four, and tighter, since these slides carry a
+   takeaway bar under the flow. */
+.why-flow.flow-three {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 56px;
+}
+
+.why-flow.flow-three .why-step { min-height: 128px; }
+
+/* What lives in the repository - labels only, no gloss per item. */
+.agents-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 56px;
+}
+
+.agents-context span {
+  padding: 10px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: 0 3px 10px rgba(23,63,87,.07);
+  font: 650 .32em/1 var(--mono);
+  white-space: nowrap;
+}
+
 .agents-quote {
   max-width: 900px;
   margin: 52px 0 0;
@@ -1255,10 +1288,14 @@
   stroke-linecap: round;
 }
 
+/* Centred, not top-aligned: these slides carry very different amounts of body,
+   so pinning them to the top left anything short stranded above a deep void.
+   The bottom padding is larger than the top, so content still sits a touch
+   above true centre, which is what you want optically. */
 .deck-slide.slide-why-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 58px 92px 100px;
 }
 
@@ -1385,10 +1422,9 @@
 
 /* Shared memory */
 
+/* Single column since the reuse/onboarding half moved to the innersource
+   slide, which was already making the same points. */
 .memory-layout {
-  display: grid;
-  grid-template-columns: 1.03fr .97fr;
-  gap: 72px;
   margin-top: 36px;
 }
 

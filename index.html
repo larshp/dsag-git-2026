@@ -241,14 +241,8 @@
                 <p>Checks and release evidence connect intent to production.</p>
               </article>
             </div>
-            <div class="memory-benefits">
-              <article><strong>Discover</strong><p>Teams find existing packages, APIs, patterns, and owners.</p></article>
-              <article><strong>Learn</strong><p>New developers learn from real changes instead of tribal knowledge.</p></article>
-              <article><strong>Reuse</strong><p>Visible ownership and quality signals make shared components easier to trust.</p></article>
-              <blockquote>Rollback begins with knowing what changed and why.</blockquote>
-            </div>
           </div>
-          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Inner Sourcing, Onboarding, and Rollback</p>
+          <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a></p>
         </section>
 
         <!-- 9 - Open source / innersource -->
@@ -285,7 +279,7 @@
               </ul>
             </div>
             <div class="innersource-private">
-              <p>Exclusive innersource works too</p>
+              <p>Internal-only works too</p>
               <p class="innersource-point"><strong>Private Git plus abapGit is the same workflow,</strong> inside the firewall. Nothing has to leave the company.</p>
               <div class="innersource-benefits">
                 <article><strong>Reuse</strong><p>Teams share packages instead of copying.</p></article>
@@ -405,25 +399,16 @@
             <div class="agents-arrow"><span>abapGit</span><i></i></div>
             <div class="agents-stage stage-repo"><span>Git</span><strong>Files in a repository</strong></div>
           </div>
-          <div class="why-takeaway">
-            <strong>Nothing new to build</strong>
-            <p>The serialisation that makes ABAP reviewable by a person is the same one that makes it readable by a machine.</p>
-          </div>
         </section>
 
         <!-- 16 - The safety net -->
-        <section class="slide-why-content">
+        <section class="slide-why-content slide-sparse">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 02</p>
             <h2>The safety net</h2>
             <p>Generated code is only safe to try when it is trivial to inspect and to undo.</p>
           </header>
           <blockquote class="agents-quote">Strong version control practices are the essential safety net that allows teams to experiment with AI-generated code confidently.<cite>DORA &middot; Version control</cite></blockquote>
-          <div class="agents-facts">
-            <article><strong>Revert</strong><p>A bad suggestion is one command away from gone.</p></article>
-            <article><strong>Audit</strong><p>The history says what changed, when, and on whose account.</p></article>
-            <article><strong>Review</strong><p>A pull request puts a person in front of the change before it lands.</p></article>
-          </div>
           <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
         </section>
 
@@ -434,14 +419,14 @@
             <h2>Something has to check</h2>
             <p>An agent writes code far faster than a person can read it. Continuous integration is what keeps up.</p>
           </header>
-          <div class="agents-facts">
-            <article><strong>It builds</strong><p>Syntax and activation checked on every push &mdash; abaplint does it without an SAP system.</p></article>
-            <article><strong>It is tested</strong><p>ABAP Unit says whether the behaviour still holds, not just whether it compiles.</p></article>
-            <article><strong>You hear back</strong><p>The verdict lands on the pull request in minutes, before anyone reads a line.</p></article>
+          <div class="why-flow flow-three" aria-label="What CI does with a generated change">
+            <article class="why-step"><span>01</span><h3>It builds</h3><p>Syntax and activation checked on every push. abaplint does this without an SAP system.</p></article>
+            <article class="why-step"><span>02</span><h3>It is tested</h3><p>ABAP Unit says whether the behaviour still holds, not only whether it compiles.</p></article>
+            <article class="why-step"><span>03</span><h3>You hear back</h3><p>The verdict lands on the pull request in minutes.</p></article>
           </div>
           <div class="why-takeaway">
             <strong>More change needs more checking</strong>
-            <p>DORA is blunt about it: without automated testing, mature version control and fast feedback, more change just means more instability.</p>
+            <p>DORA found the same: without automated testing, mature version control and fast feedback, more change means more instability.</p>
           </div>
           <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
         </section>
@@ -458,10 +443,6 @@
             <article><strong>Code that runs</strong><p>open-abap executes ABAP and its unit tests on Node, so an agent can try what it just wrote.</p></article>
             <article><strong>Nothing to damage</strong><p>Seconds per attempt, against a checkout rather than your development system.</p></article>
           </div>
-          <div class="why-takeaway">
-            <strong>Cheap attempts, safe attempts</strong>
-            <p>The loop an agent needs &mdash; write, run, read the error, try again &mdash; is one you would never want it running inside a live stack.</p>
-          </div>
         </section>
 
         <!-- 19 - The repository is the context -->
@@ -469,35 +450,33 @@
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 05</p>
             <h2>The repository is the context</h2>
-            <p>An agent is only as good as what it can see. In a repository everything it needs sits in one place.</p>
+            <p>Everything an agent needs to make a change sits in one checkout, versioned together.</p>
           </header>
-          <div class="agents-facts">
-            <article><strong>The code</strong><p>Source, and the tests that say what it is supposed to do.</p></article>
-            <article><strong>The docs</strong><p>Written beside the code instead of in a separate system.</p></article>
-            <article><strong>The instructions</strong><p>Prompts and agent configuration, versioned like everything else.</p></article>
+          <div class="agents-context">
+            <span>ABAP source</span>
+            <span>Unit tests</span>
+            <span>Documentation</span>
+            <span>CI configuration</span>
+            <span>Prompts</span>
+            <span>Agent instructions</span>
           </div>
           <div class="why-takeaway">
             <strong>Better codebases, better outcomes</strong>
-            <p>Factory scores repositories on documentation, tests, CI and modularity &mdash; the same things that already made a codebase good for people.</p>
+            <p>Factory scores repositories on documentation, tests, CI and modularity. The same things that already made a codebase good to work in.</p>
           </div>
           <p class="flow-reference"><a href="https://factory.com/agent-readiness">factory.com/agent-readiness</a></p>
         </section>
 
         <!-- 20 - A person still decides -->
-        <section class="slide-why-content">
+        <section class="slide-why-content slide-sparse">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 06</p>
             <h2>A person still decides</h2>
-            <p>Everything so far makes a change cheap to produce and cheap to check. None of it makes the call.</p>
+            <p>Everything so far makes a change cheap to produce and cheap to check. None of it decides whether to keep it.</p>
           </header>
-          <div class="agents-facts">
-            <article><strong>A proposal, not a fact</strong><p>The change arrives as a pull request and sits there until someone acts on it.</p></article>
-            <article><strong>A diff you already read</strong><p>Reviewers see exactly what moved, in the form they look at every day.</p></article>
-            <article><strong>An explicit merge</strong><p>Nothing reaches the system because a model was confident about it.</p></article>
-          </div>
           <div class="why-takeaway">
-            <strong>The agent proposes</strong>
-            <p>Git already had the gate. Agents change how fast the queue fills up, not who is accountable for what goes through it.</p>
+            <strong>The pull request is still the gate</strong>
+            <p>A change waits there until somebody merges it. Agents change how fast the queue fills up. They do not change who signs off on it.</p>
           </div>
         </section>
 
