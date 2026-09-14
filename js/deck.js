@@ -420,6 +420,49 @@
     { passive: true }
   );
 
+  /*
+    Wheel navigation. A mouse notch arrives as one big event, a trackpad flick
+    as a long tail of small ones — so accumulate the delta and step once per
+    gesture, then stay locked until the wheel has been quiet for a moment.
+    Without the lock a single flick would run through half the deck.
+  */
+  var WHEEL_STEP = 40; // accumulated delta that counts as one step
+  var WHEEL_QUIET = 120; // ms of silence that ends a gesture
+
+  var wheelDelta = 0;
+  var wheelTime = 0;
+  var wheelLocked = false;
+
+  deck.addEventListener(
+    "wheel",
+    function (event) {
+      var now = Date.now();
+      if (now - wheelTime > WHEEL_QUIET) {
+        wheelDelta = 0;
+        wheelLocked = false;
+      }
+      wheelTime = now;
+
+      // deltaMode 1 is lines, 2 is pages — normalise both to rough pixels.
+      var dy = event.deltaY;
+      if (event.deltaMode === 1) dy *= 16;
+      else if (event.deltaMode === 2) dy *= H;
+
+      if (wheelLocked) return;
+
+      // A change of direction starts a new count rather than cancelling out.
+      if (wheelDelta && (wheelDelta > 0) !== (dy > 0)) wheelDelta = 0;
+      wheelDelta += dy;
+      if (Math.abs(wheelDelta) < WHEEL_STEP) return;
+
+      if (wheelDelta > 0) next();
+      else previous();
+      wheelDelta = 0;
+      wheelLocked = true;
+    },
+    { passive: true }
+  );
+
   window.addEventListener("resize", layout);
 
   /* ---------- start ----------------------------------------------------- */
