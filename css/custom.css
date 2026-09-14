@@ -925,8 +925,13 @@
   margin-top: 16px;
 }
 
+/* The grid stretches this card to the height of the dark panel beside it, so
+   the list has to fill it — left at its natural height it stranded half a card
+   of white under the last project. */
 .innersource-projects {
-  padding: 14px 22px 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 22px;
   border: 1px solid var(--rule);
   border-radius: 18px;
   background: rgba(255,255,255,.6);
@@ -950,6 +955,10 @@
 .innersource-projects ul {
   display: grid;
   grid-template-columns: max-content 1fr max-content;
+  /* Equal rows over whatever height the card ends up with. 1fr is
+     minmax(auto, 1fr), so a row still grows rather than clipping. */
+  grid-auto-rows: 1fr;
+  flex: 1;
   column-gap: 10px;
   margin: 0;
   padding: 0;
@@ -964,16 +973,16 @@
      Browsers that do support subgrid take the line below and self-size. */
   grid-template-columns: 88px 1fr 40px;
   grid-template-columns: subgrid;
-  align-items: baseline;
+  align-items: baseline; /* the three cells share a baseline ... */
+  align-content: center; /* ... and the row sits centred in its share */
   padding: 7px 0;
   border-top: 1px solid var(--rule);
-  font-size: .3em;
+  font-size: .32em;
   line-height: 1.2;
 }
 
 .innersource-projects li:first-child {
   border-top: 0;
-  padding-top: 4px;
 }
 
 .innersource-projects a { text-decoration: none; }
