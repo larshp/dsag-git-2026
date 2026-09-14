@@ -77,6 +77,17 @@
   transform: translate(-16px, -12px);
 }
 
+/*
+  Slides marked data-no-labels: nothing in the corners competing with the
+  artwork. The progress bar stays — it is part of the design. Must come after
+  the per-state rules above, which set the counter back to display: inline at
+  the same specificity.
+*/
+.deck.is-unlabelled .deck-counter,
+.deck.is-unlabelled .deck-help-btn {
+  display: none;
+}
+
 .deck[data-slide-state="content"] .deck-progress::before,
 .deck[data-slide-state="closing"] .deck-progress::before {
   background: rgba(23,63,87,.16);

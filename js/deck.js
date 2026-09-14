@@ -204,6 +204,12 @@
       "data-slide-state",
       currentEl().getAttribute("data-state") || "content"
     );
+    // The chrome is a sibling of the stage, so a slide that wants no counter
+    // and no help button in its corners has to say so through the deck.
+    deck.classList.toggle(
+      "is-unlabelled",
+      currentEl().hasAttribute("data-no-labels")
+    );
     counterEl.textContent = index + 1 + " / " + flat.length;
     progressEl.style.width =
       (flat.length > 1 ? (index / (flat.length - 1)) * 100 : 100) + "%";
