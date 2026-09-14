@@ -346,7 +346,85 @@
           <p class="flow-reference"><a href="https://docs.heliconialabs.com/flow-onepagers.pdf">Flow One-Pagers</a> &middot; Repository Health and Transport Sequencing</p>
         </section>
 
-        <!-- 13 - Git and the agents (chapter) -->
+        <!-- 13 - How does it work? (chapter) -->
+        <section data-state="why" data-no-labels class="slide-why-section">
+          <div class="why-section-copy">
+            <p class="eyebrow">In the development system</p>
+            <h2>How<br /><span>it works</span></h2>
+            <p>One screen where transports, branches and pull requests meet.</p>
+          </div>
+        </section>
+
+        <!-- 14 - One system, many branches -->
+        <section class="slide-why-content slide-shared">
+          <header class="why-heading">
+            <p class="eyebrow">How it works &middot; 01</p>
+            <h2>One system, many branches</h2>
+            <p>Git assumes every developer has their own working copy. ABAP development happens in one shared system, where every object exists exactly once &mdash; and a change can start in Git or in the development system.</p>
+          </header>
+          <div class="shared-system" aria-label="Three developers on three branches, all working in the same development system">
+            <div class="shared-branches">
+              <article><span>Developer A</span><strong>feature/invoice-split</strong><i>DEVK900123</i></article>
+              <article><span>Developer B</span><strong>feature/order-batch</strong><i>DEVK900456</i></article>
+              <article><span>Developer C</span><strong>fix/posting-date</strong><i>DEVK900789</i></article>
+            </div>
+            <div class="agents-arrow"><span>either direction</span><i></i></div>
+            <div class="shared-target">
+              <span>DEV</span>
+              <strong>One development system</strong>
+              <p>Three developers at once, no local checkout, no second copy. One active version of every object, separated only by transports.</p>
+            </div>
+          </div>
+          <div class="why-takeaway">
+            <strong>Which change belongs to which branch?</strong>
+            <p>Nothing in the system answers that. Two developers can touch the same object in the same week, and the branch, the pull request and the review all live somewhere else.</p>
+          </div>
+        </section>
+
+        <!-- 15 - abapGit Flow -->
+        <section class="slide-why-content slide-flow-screen">
+          <header class="why-heading">
+            <p class="eyebrow">How it works &middot; 02</p>
+            <h2>abapGit Flow</h2>
+            <p>Every transport next to its branch, its pull request and the checks that ran &mdash; without leaving the development system.</p>
+          </header>
+          <figure class="flow-screen">
+            <img src="assets/abapgit-flow.svg" alt="The abapGit Flow screen inside SAP GUI: one transport with no branch yet, offering to create a branch, commit and pull request, and one transport whose branch has an open draft pull request with passing abaplint checks. Each lists its changed files with remote and local hashes." />
+            <figcaption>Sample data</figcaption>
+          </figure>
+        </section>
+
+        <!-- 16 - Editing off stack -->
+        <section class="slide-why-content">
+          <header class="why-heading">
+            <p class="eyebrow">How it works &middot; 03</p>
+            <h2>Editing off stack</h2>
+            <p>Once the code is files in a repository, the edit, check and run loop no longer needs the shared system &mdash; no logon, no object lock, no transport.</p>
+          </header>
+          <div class="why-flow flow-three" aria-label="The off-stack loop: edit, check, run">
+            <article class="why-step">
+              <span>01</span>
+              <h3>Edit</h3>
+              <p>Clone the repository and work in your own editor. abaplint&rsquo;s language server gives syntax, navigation and quick fixes on plain files.</p>
+            </article>
+            <article class="why-step">
+              <span>02</span>
+              <h3>Check</h3>
+              <p>abaplint applies the rules the project agreed on &mdash; naming, obsolete statements, the target release &mdash; in milliseconds, without a system.</p>
+            </article>
+            <article class="why-step">
+              <span>03</span>
+              <h3>Run</h3>
+              <p>The abaplint transpiler turns the ABAP into JavaScript and open-abap supplies the runtime, so ABAP Unit runs on Node.</p>
+            </article>
+          </div>
+          <div class="why-takeaway">
+            <strong>The same rules run in CI</strong>
+            <p>What passes on a laptop is what the pull request checks again. The system is left for what genuinely needs it: real data, real integration, the final test.</p>
+          </div>
+        </section>
+
+        <!-- 17 - Git and the agents (chapter) -->
         <section data-state="why" data-no-labels class="slide-why-section">
           <div class="why-section-copy">
             <p class="eyebrow">What about AI?</p>
@@ -355,7 +433,7 @@
           </div>
         </section>
 
-        <!-- 14 - Where this comes from -->
+        <!-- 18 - Where this comes from -->
         <section class="slide-why-content">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents</p>
@@ -376,7 +454,7 @@
           </div>
         </section>
 
-        <!-- 15 - Agents need files -->
+        <!-- 19 - Agents need files -->
         <section class="slide-why-content">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 01</p>
@@ -390,7 +468,7 @@
           </div>
         </section>
 
-        <!-- 16 - The safety net -->
+        <!-- 20 - The safety net -->
         <section class="slide-why-content slide-sparse">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 02</p>
@@ -401,7 +479,7 @@
           <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
         </section>
 
-        <!-- 17 - Tests and a build -->
+        <!-- 21 - Tests and a build -->
         <section class="slide-why-content">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 03</p>
@@ -420,7 +498,7 @@
           <p class="flow-reference"><a href="https://dora.dev/ai/">dora.dev/ai</a></p>
         </section>
 
-        <!-- 18 - Iterate off stack -->
+        <!-- 22 - Iterate off stack -->
         <section class="slide-why-content">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 04</p>
@@ -434,7 +512,7 @@
           </div>
         </section>
 
-        <!-- 19 - The repository is the context -->
+        <!-- 23 - The repository is the context -->
         <section class="slide-why-content">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 05</p>
@@ -456,7 +534,7 @@
           <p class="flow-reference"><a href="https://factory.com/agent-readiness">factory.com/agent-readiness</a></p>
         </section>
 
-        <!-- 20 - A person still decides -->
+        <!-- 24 - A person still decides -->
         <section class="slide-why-content slide-sparse">
           <header class="why-heading">
             <p class="eyebrow">Git and the agents &middot; 06</p>
@@ -469,7 +547,7 @@
           </div>
         </section>
 
-        <!-- 21 - Sun -->
+        <!-- 25 - Sun -->
         <section data-state="why" data-no-labels class="slide-sun">
           <div class="ambient ambient-glow" aria-hidden="true"></div>
           <svg class="sun" viewBox="0 0 100 100" role="img" aria-label="Sun">
@@ -491,13 +569,13 @@
           </svg>
         </section>
 
-        <!-- 22 - Demo -->
+        <!-- 26 - Demo -->
         <section data-state="why" data-no-labels class="slide-demo">
           <div class="ambient ambient-glow" aria-hidden="true"></div>
           <h2 class="demo-word">Demo<span>?</span></h2>
         </section>
 
-        <!-- 23 - Public GitHub sponsors -->
+        <!-- 27 - Public GitHub sponsors -->
         <section class="slide-sponsors">
           <div class="sponsor-heading">
             <p class="eyebrow">GitHub Sponsors</p>
@@ -548,7 +626,7 @@
           <p class="sponsor-source">Public sponsors on GitHub &middot; checked 8 September 2026</p>
         </section>
 
-        <!-- 24 - Q&A / links -->
+        <!-- 28 - Q&A / links -->
         <section data-state="closing" class="slide-closing">
           <div class="closing-copy">
             <p class="eyebrow">Checkout complete</p>

@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1377" height="818" viewBox="0 0 1377 818"
+     font-family="Arial, Helvetica, sans-serif" role="img"
+     aria-label="The abapGit Flow page running inside SAP GUI, listing two transports with their branches, pull request status and changed files">
+  <title>abapGit Flow in SAP GUI</title>
+
+  <!--
+    A drawing of the abapGit Flow screen, not a screenshot: vector, so it stays
+    sharp on a projector, and the text is real text. Coordinates are 1:1 with
+    the original 1377x818 capture. Every name, transport, description, path
+    and hash below is invented sample data - do not replace with real ones.
+  -->
+
+  <defs>
+    <linearGradient id="titlebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f0f8"/>
+      <stop offset="0.5" stop-color="#d3e2f1"/>
+      <stop offset="1" stop-color="#c6d9ec"/>
+    </linearGradient>
+    <linearGradient id="toolbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfdfe"/>
+      <stop offset="1" stop-color="#eef1f5"/>
+    </linearGradient>
+    <!-- Delivery truck: abapGit marks a transport with one. -->
+    <g id="truck" fill="#1c1c1c">
+      <rect x="0" y="2" width="20" height="14" rx="1.5"/>
+      <path d="M20 6h6.5l6 5.2V16H20z"/>
+      <path d="M21.5 7.5h4.6l3.4 3.2h-8z" fill="#f2f2f2"/>
+      <circle cx="6.5" cy="17.5" r="4"/>
+      <circle cx="25" cy="17.5" r="4"/>
+      <circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/>
+      <circle cx="25" cy="17.5" r="1.6" fill="#fff"/>
+    </g>
+
+    <!-- Branch glyph. -->
+    <g id="branch" fill="none" stroke="#1c1c1c" stroke-width="2.3">
+      <circle cx="4.5" cy="5" r="3.3"/>
+      <circle cx="4.5" cy="20" r="3.3"/>
+      <circle cx="17" cy="5" r="3.3"/>
+      <path d="M4.5 8.3v8.4"/>
+      <path d="M17 8.3v1.5c0 3.6-4.6 4.3-8.4 5"/>
+    </g>
+
+    <g id="check" fill="none" stroke="#1a1a1a" stroke-width="2.4"
+       stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 6.2 4.6 11 13 0.8"/>
+    </g>
+  </defs>
+
+  <!-- ============================ window chrome ============================ -->
+
+  <rect width="1377" height="818" fill="#f4f6f8"/>
+  <rect width="1377" height="44" fill="#fdfdfe"/>
+  <rect y="43" width="1377" height="1" fill="#dfe3e8"/>
+
+  <!-- window buttons, top right -->
+  <path d="M1310 0h4l30 30h-34z" fill="#8fb0d4"/>
+  <rect x="1219" y="-6" width="94" height="30" rx="4" fill="#3b6ca8" stroke="#23456f"/>
+  <g fill="#dbe6f2" stroke="#23456f" stroke-width="1">
+    <rect x="1227" y="2" width="20" height="16" rx="2"/>
+    <rect x="1253" y="2" width="20" height="16" rx="2"/>
+    <rect x="1279" y="2" width="20" height="16" rx="2"/>
+  </g>
+  <g stroke="#23456f" stroke-width="1.6">
+    <path d="M1232 14h10"/>
+    <path d="M1258 6h10v8h-10z" fill="none"/>
+    <path d="M1284 6l10 8M1294 6l-10 8"/>
+  </g>
+
+  <!-- menu bar -->
+  <g>
+    <rect x="13" y="19" width="17" height="14" rx="1.5" fill="#fff" stroke="#7d8b99"/>
+    <path d="M17 26h7M21 23l3 3-3 3" fill="none" stroke="#2f6fb5" stroke-width="1.6"/>
+  </g>
+  <g font-size="14" fill="#1a1a1a">
+    <text x="54" y="32">Selections</text>
+    <text x="196" y="32">Edit</text>
+    <text x="252" y="32">Goto</text>
+    <text x="305" y="32">System</text>
+    <text x="370" y="32">Help</text>
+  </g>
+  <!-- accelerator underlines -->
+  <g fill="#1a1a1a" shape-rendering="crispEdges">
+    <rect x="54" y="34" width="9" height="1"/>
+    <rect x="196" y="34" width="9" height="1"/>
+    <rect x="252" y="34" width="9" height="1"/>
+    <rect x="314" y="34" width="8" height="1"/>
+    <rect x="370" y="34" width="10" height="1"/>
+  </g>
+
+  <!-- ============================== toolbar =============================== -->
+
+  <rect y="44" width="1377" height="40" fill="url(#toolbar)"/>
+  <rect y="83" width="1377" height="1" fill="#ced5dd"/>
+
+  <!-- enter -->
+  <circle cx="33" cy="64" r="11" fill="#fff" stroke="#3f9b41" stroke-width="2"/>
+  <path d="M27 64l4.5 5 8-10" fill="none" stroke="#3f9b41" stroke-width="2.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- command field -->
+  <rect x="68" y="52" width="188" height="25" rx="2" fill="#fff" stroke="#a7b0ba"/>
+  <rect x="231" y="53" width="24" height="23" fill="#eef1f5" stroke="#a7b0ba"/>
+  <path d="M238 62l5 6 5-6z" fill="#3a4650"/>
+  <text x="266" y="70" font-size="16" fill="#5a6672">&#171;</text>
+
+  <!-- save -->
+  <g transform="translate(288,54)">
+    <rect x="0" y="0" width="19" height="19" rx="2" fill="#9fb3c6" stroke="#6b8298"/>
+    <rect x="4" y="0" width="11" height="7" fill="#e9eff4"/>
+    <rect x="3" y="11" width="13" height="8" fill="#e9eff4"/>
+  </g>
+
+  <!-- back / exit / cancel -->
+  <g stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <circle cx="336" cy="64" r="10" fill="#4aa544" stroke="#2f7a2b"/>
+    <path d="M340 60l-5 4 5 4"/>
+    <circle cx="363" cy="64" r="10" fill="#e9a53c" stroke="#b97d1d"/>
+    <path d="M367 60l-5 4 5 4"/>
+    <circle cx="390" cy="64" r="10" fill="#d4472c" stroke="#9e2f1a"/>
+    <path d="M394 60l-5 4 5 4"/>
+  </g>
+
+  <!-- print / find / find next, disabled -->
+  <g fill="none" stroke="#bcc4cc" stroke-width="1.8">
+    <path d="M420 62h15v10h-15z"/><path d="M424 56h7v6h-7z"/>
+    <circle cx="453" cy="62" r="6"/><path d="M458 67l5 5"/>
+    <circle cx="481" cy="62" r="6"/><path d="M486 67l5 5"/><path d="M478 62h6M481 59v6"/>
+  </g>
+
+  <!-- paging, disabled -->
+  <g fill="none" stroke="#bcc4cc" stroke-width="1.8">
+    <rect x="512" y="55" width="18" height="18" rx="2"/><path d="M523 60l-5 4 5 4M517 60v8"/>
+    <rect x="540" y="55" width="18" height="18" rx="2"/><path d="M551 60l-5 4 5 4"/>
+    <rect x="568" y="55" width="18" height="18" rx="2"/><path d="M575 60l5 4-5 4"/>
+    <rect x="596" y="55" width="18" height="18" rx="2"/><path d="M603 60l5 4-5 4M609 60v8"/>
+  </g>
+
+  <!-- session icons -->
+  <g>
+    <rect x="632" y="55" width="18" height="18" rx="2" fill="#eef1f5" stroke="#8a97a4"/>
+    <rect x="632" y="55" width="18" height="5" fill="#e9a53c"/>
+    <rect x="660" y="55" width="18" height="18" rx="2" fill="#eef1f5" stroke="#8a97a4"/>
+    <rect x="660" y="55" width="18" height="5" fill="#5d8fc4"/>
+  </g>
+
+  <!-- help -->
+  <circle cx="706" cy="64" r="10" fill="#2f6fb5" stroke="#1d4c82"/>
+  <text x="706" y="70" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">?</text>
+
+  <!-- layout -->
+  <g>
+    <rect x="724" y="55" width="20" height="18" rx="2" fill="#fff" stroke="#8a97a4"/>
+    <rect x="724" y="55" width="20" height="5" fill="#5d8fc4"/>
+    <rect x="727" y="63" width="6" height="7" fill="#d4472c"/>
+    <rect x="735" y="63" width="6" height="7" fill="#4aa544"/>
+  </g>
+
+  <!-- ============================== main panel ============================ -->
+
+  <path d="M24 102a6 6 0 0 1 6-6h1320a6 6 0 0 1 6 6v28H24z" fill="url(#titlebar)"/>
+  <text x="46" y="120" font-size="17" font-weight="700" font-style="italic" fill="#111">abapGit</text>
+  <rect x="24" y="130" width="1332" height="678" fill="#f2f2f2" stroke="#c3cbd4"/>
+
+  <!-- SAP GUI cursor marker -->
+  <path d="M27 140v-8h9" fill="none" stroke="#d4472c" stroke-width="2"/>
+
+  <!-- ========================== abapGit page header ======================= -->
+
+  <g transform="translate(38,143) scale(0.2388)">
+    <path transform="translate(-102.157,-476.648)" fill="#f03c2e" d="m 214.93698,529.53539 -49.74501,-49.7389 c -2.8622,-2.8648 -7.5082,-2.8648 -10.374,0 l -10.329,10.33 13.102,13.102 c 3.0459,-1.0284 6.5371,-0.33888 8.9639,2.0884 2.4394,2.4424 3.124,5.9634 2.0698,9.0195 l 12.628,12.628 c 3.0551,-1.0528 6.58,-0.37262 9.0195,2.0712 3.4106,3.4096 3.4106,8.9345 0,12.345 -3.4111,3.4116 -8.936,3.4116 -12.349,0 -2.5645,-2.5665 -3.1988,-6.3345 -1.8999,-9.4942 l -11.777,-11.777 -0.001,30.991 c 0.8315,0.41162 1.6162,0.961 2.3091,1.6509 3.4096,3.4092 3.4096,8.9331 0,12.348 -3.4106,3.4091 -8.938,3.4091 -12.345,0 -3.4101,-3.4146 -3.4101,-8.9385 0,-12.348 0.84275,-0.84125 1.8179,-1.478 2.8584,-1.9048 v -31.279 c -1.041,-0.425 -2.015,-1.057 -2.859,-1.905 -2.583,-2.581 -3.2051,-6.372 -1.8804,-9.5439 l -12.916,-12.918 -34.106,34.105 c -2.8657,2.867 -2.8657,7.513 0,10.378 l 49.742,49.739 c 2.8638,2.8648 7.5082,2.8648 10.376,0 l 49.512,-49.504 c 2.86481,-2.8662 2.86481,-7.5136 0,-10.379"/>
+  </g>
+  <text x="80" y="174" font-size="27" font-weight="700" fill="#111">abapGit</text>
+  <path d="M206 150l18 11-18 11z" fill="#bdbdbd"/>
+  <text x="237" y="173" font-size="29" fill="#9e9e9e">Flow</text>
+  <g font-size="18.5" font-weight="600" fill="#1a6fb5">
+    <text x="1155" y="168">Refresh</text>
+    <text x="1259" y="168">Back</text>
+  </g>
+  <path d="M26 190h1280" stroke="#dcdcdc"/>
+
+  <!-- ====================== block 1: transport, no branch ================= -->
+
+  <text x="40" y="230" font-size="28" font-weight="700" fill="#111">demo-sap-repo -</text>
+  <use href="#truck" xlink:href="#truck" transform="translate(286,209)"/>
+  <text x="330" y="231" font-size="26" font-family="Consolas, 'Cascadia Mono', monospace"
+        fill="#1a1a1a">DEVK900123</text>
+
+  <text x="40" y="257" font-size="18.5" fill="#222">No branch found, comparing with <tspan
+        font-family="Consolas, 'Cascadia Mono', monospace" fill="#1a1a1a">main</tspan></text>
+  <text x="40" y="281" font-size="18.5" fill="#222">Transport: <tspan
+        font-family="Consolas, 'Cascadia Mono', monospace" fill="#1a1a1a">DEVK900123</tspan> - test-fix</text>
+
+  <text x="57" y="311" font-size="19" font-weight="600" fill="#1a6fb5">Create branch + commit + PR</text>
+
+  <rect x="40" y="323" width="747" height="74" rx="5" fill="#fff" stroke="#d6d6d6"/>
+  <g font-size="16.5" fill="#111">
+    <text x="50" y="348">Filename</text>
+    <text x="556" y="348">Remote</text>
+    <text x="645" y="348">Local</text>
+  </g>
+  <g fill="#111" shape-rendering="crispEdges">
+    <rect x="50" y="352" width="68" height="1"/>
+    <rect x="556" y="352" width="59" height="1"/>
+    <rect x="645" y="352" width="41" height="1"/>
+  </g>
+  <text x="50" y="384" font-size="16.5" fill="#1a1a1a">/src/zdemo_abapgit_2/zdemo_fi_report/z_fi_report_01.prog.abap</text>
+  <g font-size="16.5" font-family="Consolas, 'Cascadia Mono', monospace" fill="#3a3a3a">
+    <text x="556" y="384">7c1d4e2</text>
+    <text x="645" y="384">a30b915</text>
+  </g>
+  <text x="737" y="384" font-size="16.5" fill="#1a6fb5">Diff</text>
+
+  <!-- ================== block 2: branch with an open pull request ========= -->
+
+  <text x="40" y="448" font-size="28" font-weight="700" fill="#111">demo-sap-repo -</text>
+  <use href="#branch" xlink:href="#branch" transform="translate(288,427)"/>
+  <text x="318" y="449" font-size="27" font-weight="700" fill="#111">DEVK900456</text>
+  <text x="503" y="448" font-size="28" font-weight="700" fill="#111">-</text>
+  <use href="#truck" xlink:href="#truck" transform="translate(520,428)"/>
+  <text x="564" y="449" font-size="26" font-family="Consolas, 'Cascadia Mono', monospace"
+        fill="#1a1a1a">DEVK900456</text>
+
+  <text x="40" y="475" font-size="18.5" fill="#222">Pull Request:</text>
+  <text x="164" y="475" font-size="18.5" fill="#1a6fb5">DEVK900456 - :4711: Automatic posting of material movements [01] #231</text>
+  <text x="40" y="498" font-size="18.5" fill="#222">Status: Draft</text>
+  <text x="40" y="521" font-size="18.5" fill="#222">Transport: <tspan
+        font-family="Consolas, 'Cascadia Mono', monospace" fill="#1a1a1a">DEVK900456</tspan> - @DEMO@ Automatic posting of material movements [01]</text>
+
+  <use href="#check" xlink:href="#check" transform="translate(42,534)"/>
+  <text x="64" y="545" font-size="18.5" fill="#222">abaplint / merge check: Successful</text>
+  <use href="#check" xlink:href="#check" transform="translate(42,557)"/>
+  <text x="64" y="568" font-size="18.5" fill="#222">abaplint: 57 issues</text>
+
+  <text x="57" y="598" font-size="19" font-weight="600" fill="#a8a8a8">Pull</text>
+  <text x="119" y="598" font-size="19" font-weight="600" fill="#1a6fb5">Stage and Commit</text>
+
+  <rect x="40" y="609" width="627" height="150" rx="5" fill="#fff" stroke="#d6d6d6"/>
+  <g font-size="16.5" fill="#111">
+    <text x="50" y="634">Filename</text>
+    <text x="430" y="634">Remote</text>
+    <text x="521" y="634">Local</text>
+  </g>
+  <g fill="#111" shape-rendering="crispEdges">
+    <rect x="50" y="638" width="68" height="1"/>
+    <rect x="430" y="638" width="59" height="1"/>
+    <rect x="521" y="638" width="41" height="1"/>
+  </g>
+  <g font-size="16.5" fill="#1a1a1a">
+    <text x="50" y="670">/src/zdemo/zdemo_order_batch_cls.prog.abap</text>
+    <text x="50" y="707">/src/zdemo/zdemo_order_batch_f01.prog.abap</text>
+    <text x="50" y="744">/src/zdemo/zdemo_order_batch_new3.prog.abap</text>
+  </g>
+  <g font-size="16.5" font-family="Consolas, 'Cascadia Mono', monospace" fill="#3a3a3a">
+    <text x="430" y="670">4f2a018</text>
+    <text x="521" y="670">b71c3d9</text>
+    <text x="430" y="707">6de20a4</text>
+    <text x="521" y="707">1a8f30c</text>
+    <text x="430" y="744">c94b7e1</text>
+    <text x="521" y="744">5308af6</text>
+  </g>
+  <g font-size="16.5" fill="#1a6fb5">
+    <text x="613" y="670">Diff</text>
+    <text x="613" y="707">Diff</text>
+    <text x="613" y="744">Diff</text>
+  </g>
+
+  <!-- ============================= scrollbars ============================= -->
+
+  <!-- HTML viewer -->
+  <rect x="1308" y="140" width="21" height="640" fill="#f6f6f6" stroke="#e2e2e2"/>
+  <rect x="1311" y="618" width="15" height="34" rx="2" fill="#c9c9c9"/>
+  <!-- SAP container, arrows at both ends -->
+  <rect x="1330" y="140" width="22" height="640" fill="#eef0f2" stroke="#d7dbe0"/>
+  <g fill="#5a6672">
+    <path d="M1341 146l6 8h-12z"/>
+    <path d="M1341 172l-6-8h12z"/>
+    <path d="M1341 748l6 8h-12z"/>
+    <path d="M1341 774l-6-8h12z"/>
+  </g>
+  <rect x="1333" y="336" width="16" height="42" rx="2" fill="#c4cbd2"/>
+
+  <!-- =============================== footer =============================== -->
+
+  <path d="M659 787h58l-12 18h-46z" fill="#1d6fc0"/>
+  <text x="666" y="801" font-size="12.5" font-weight="700" fill="#fff" letter-spacing="0.5">SAP</text>
+  <path d="M1340 790l9 7-9 7z" fill="#5a6672"/>
+
+  <!-- status bar -->
+  <rect y="808" width="1377" height="10" fill="#e9edf1"/>
+  <rect x="24" y="812" width="1332" height="6" rx="3" fill="#c6d5e6" stroke="#8fb0d4"/>
+  <g stroke="#9aa5b1" stroke-width="1.4">
+    <path d="M1362 806l8-8M1366 810l6-6M1370 814l3-3"/>
+  </g>
+</svg>
