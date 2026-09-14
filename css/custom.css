@@ -303,11 +303,29 @@
 }
 .speaker h3 { color: var(--ink); }
 .role {
-  margin: 13px 0 24px;
+  margin: 13px 0 18px;
   color: var(--muted);
   font-size: .5em;
   font-weight: 580;
 }
+/* Experience badge: big number, quiet caption - readable from the back row. */
+.experience {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 0 0 24px;
+}
+.experience strong {
+  color: var(--git);
+  font-size: .72em;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.experience span {
+  color: var(--muted);
+  font: 560 .42em/1.2 var(--mono);
+}
+.speaker-lars .experience strong { color: var(--dsag); }
 .speaker ul {
   margin: 0;
   padding-left: 1em;
